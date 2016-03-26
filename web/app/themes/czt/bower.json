@@ -1,36 +1,58 @@
 {
-  "name": "sage",
-  "homepage": "https://roots.io/sage/",
+  "name": "czt",
+  "homepage": "https://christianztamayo.com/",
   "authors": [
-    "Ben Word <ben@benword.com>"
+    "Christian Z. Tamayo <christianztamayo@gmail.com>"
   ],
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "html5shiv": "^3.7.3",
+    "respond": "^1.4.2",
+    "picturefill": "^3.0.2",
+    "gsap": "^1.18.2",
+    "scrollmagic": "^2.0.5",
+    "fastclick": "^1.0.6",
+    "headroom.js": "^0.7.0",
+    "slick-carousel": "^1.5.9",
+    "particles.js": "^2.0.0",
+    "jquery-form": "3.51",
     "bootstrap-sass": "3.3.6"
   },
   "overrides": {
     "bootstrap-sass": {
       "main": [
-        "./assets/stylesheets/_bootstrap.scss",
+        "./assets/stylesheets/bootstrap/_variables.scss",
+        "./assets/stylesheets/bootstrap/_mixins.scss",
+        "./assets/stylesheets/bootstrap/_normalize.scss",
+        "./assets/stylesheets/bootstrap/_print.scss",
+        "./assets/stylesheets/bootstrap/_scaffolding.scss",
+        "./assets/stylesheets/bootstrap/_type.scss",
+        "./assets/stylesheets/bootstrap/_code.scss",
+        "./assets/stylesheets/bootstrap/_grid.scss",
+        "./assets/stylesheets/bootstrap/_tables.scss",
+        "./assets/stylesheets/bootstrap/_forms.scss",
+        "./assets/stylesheets/bootstrap/_buttons.scss",
+        "./assets/stylesheets/bootstrap/_component-animations.scss",
+        "./assets/stylesheets/bootstrap/_modals.scss",
+        "./assets/stylesheets/bootstrap/_tooltip.scss",
+        "./assets/stylesheets/bootstrap/_utilities.scss",
         "./assets/javascripts/bootstrap/transition.js",
-        "./assets/javascripts/bootstrap/alert.js",
-        "./assets/javascripts/bootstrap/button.js",
-        "./assets/javascripts/bootstrap/carousel.js",
-        "./assets/javascripts/bootstrap/collapse.js",
-        "./assets/javascripts/bootstrap/dropdown.js",
         "./assets/javascripts/bootstrap/modal.js",
-        "./assets/javascripts/bootstrap/tooltip.js",
-        "./assets/javascripts/bootstrap/popover.js",
-        "./assets/javascripts/bootstrap/scrollspy.js",
-        "./assets/javascripts/bootstrap/tab.js",
-        "./assets/javascripts/bootstrap/affix.js",
-        "./assets/fonts/bootstrap/glyphicons-halflings-regular.eot",
-        "./assets/fonts/bootstrap/glyphicons-halflings-regular.svg",
-        "./assets/fonts/bootstrap/glyphicons-halflings-regular.ttf",
-        "./assets/fonts/bootstrap/glyphicons-halflings-regular.woff",
-        "./assets/fonts/bootstrap/glyphicons-halflings-regular.woff2"
+        "./assets/javascripts/bootstrap/tooltip.js"
       ]
+    },
+    "scrollmagic": {
+      "main": [
+        "scrollmagic/uncompressed/ScrollMagic.js",
+        "scrollmagic/uncompressed/plugins/animation.gsap.js"
+      ]
+    },
+    "slick-carousel": {
+      "main": "slick/slick.js"
+    },
+    "headroom.js": {
+      "main": "dist/headroom.js"
     }
   }
 }

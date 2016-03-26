@@ -95,12 +95,21 @@ function display_sidebar() {
  * Theme assets
  */
 function assets() {
+  // contact form 7 assets cleanup
+  wp_deregister_script('jquery-form');
+  wp_deregister_script('contact-form-7');
+  wp_deregister_style('contact-form-7');
+  wp_enqueue_script('contact-form-7', wpcf7_plugin_url('includes/js/scripts.js'), ['sage/js'], WPCF7_VERSION, true);
+
   wp_enqueue_style('sage/css', Assets\asset_path('styles/main.css'), false, null);
+  wp_enqueue_style('font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', false, null);
 
   if (is_single() && comments_open() && get_option('thread_comments')) {
     wp_enqueue_script('comment-reply');
   }
 
   wp_enqueue_script('sage/js', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
+  wp_enqueue_script('html5shiv-respond', Assets\asset_path('scripts/html5shiv-respond.js'), [], null);
+  wp_script_add_data('html5shiv-respond', 'conditional', 'lt IE 9');
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
