@@ -1,0 +1,78 @@
+////////////////
+// Navigation //
+////////////////
+
+.nav-overlay {
+  position: fixed;
+  border-radius: 50%;
+  background: rgba($modal-backdrop-bg, $modal-backdrop-opacity);
+  z-index: $zindex-modal-background;
+}
+.nav-main {
+    display: none;
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    overflow-y: scroll;
+    z-index: $zindex-modal;
+    .container-fluid {
+      position: relative;
+    }
+}
+  .nav-close {
+    position: absolute; top: 4px; right: ($grid-gutter-width / 2);
+    @extend %header-buttons;
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    background-color: $brand-primary;
+    overflow: hidden;
+    .icon-bar {
+      margin-top: 0 !important;
+      height: 3px;
+      &:first-child {
+        position: absolute; top: 19px; left: 9px;
+        transform: rotate(90deg);
+      }
+    }
+  }
+  .nav-menu {
+    @extend .list-unstyled;
+    margin-bottom: 0;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-top: 5em;
+    margin-bottom: 5em;
+    width: 90%;
+    text-align: center;
+    max-width: 600px;
+    transform: translateX(-50%);
+    li {
+      border-bottom: 1px solid $gray-dark;
+      &:last-child {
+        border-bottom: 0;
+      }
+      a {
+        display: block;
+        font-weight: bold;
+        font-size: 4em;
+        color: $gray-lighter;
+        text-decoration: none;
+        transition: color 0.15s, transform 0.1s;
+        &:hover,
+        &:focus {
+          color: $brand-primary;
+          transform: scale(1.05);
+        }
+        &:active {
+          color: $brand-primary;
+          transform: scale(1);
+        }
+      }
+    }
+  }
+
+body.navOpen {
+  .nav-main {
+    display: block;
+  }
+}

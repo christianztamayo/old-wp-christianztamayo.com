@@ -1,0 +1,42 @@
+/////////////
+// Sprites //
+/////////////
+
+.spr-skills { background-image: url(../images/spr-skills@1x.png); background-repeat: no-repeat; display: inline-block; }
+.spr-angularjs { width: 71px; height: 75px; background-position: -4px -4px; }
+.spr-aws { width: 128px; height: 75px; background-position: -83px -4px; }
+.spr-bootstrap { width: 75px; height: 75px; background-position: -219px -4px; }
+.spr-bower { width: 85px; height: 75px; background-position: -302px -4px; }
+.spr-chrome { width: 75px; height: 75px; background-position: -4px -87px; }
+.spr-css3 { width: 54px; height: 75px; background-position: -395px -4px; }
+.spr-firefox { width: 73px; height: 75px; background-position: -87px -87px; }
+.spr-git { width: 75px; height: 75px; background-position: -168px -87px; }
+.spr-grunt { width: 56px; height: 75px; background-position: -251px -87px; }
+.spr-gsap { width: 65px; height: 75px; background-position: -315px -87px; }
+.spr-gulp { width: 34px; height: 75px; background-position: -388px -87px; }
+.spr-html5 { width: 54px; height: 75px; background-position: -4px -170px; }
+.spr-javascript { width: 75px; height: 75px; background-position: -66px -170px; }
+.spr-jquery { width: 130px; height: 75px; background-position: -149px -170px; }
+.spr-laravel { width: 109px; height: 75px; background-position: -287px -170px; }
+.spr-less { width: 120px; height: 75px; background-position: -4px -253px; }
+.spr-mongodb { width: 119px; height: 75px; background-position: -132px -253px; }
+.spr-mysql { width: 100px; height: 75px; background-position: -259px -253px; }
+.spr-nodejs { width: 118px; height: 75px; background-position: -4px -336px; }
+.spr-npm { width: 120px; height: 75px; background-position: -130px -336px; }
+.spr-opengraph { width: 92px; height: 75px; background-position: -367px -253px; }
+.spr-photoshop { width: 76px; height: 75px; background-position: -258px -336px; }
+.spr-php { width: 90px; height: 75px; background-position: -342px -336px; }
+.spr-react { width: 84px; height: 75px; background-position: -457px -4px; }
+.spr-safari { width: 75px; height: 75px; background-position: -430px -87px; }
+.spr-sass { width: 100px; height: 75px; background-position: -404px -170px; }
+.spr-sublimetext { width: 87px; height: 75px; background-position: -467px -253px; }
+.spr-wordpress { width: 75px; height: 75px; background-position: -440px -336px; }
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (min-resolution: 192dpi) {
+  .spr-skills {
+    background-image: url(../images/spr-skills@2x.png);
+    background-size: 558px 415px;
+  }
+}

@@ -1,0 +1,29 @@
+////////////
+// Footer //
+////////////
+
+.footer-main {
+  background-color: $gray-darker;
+  color: #ccc;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  &.affix {
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  .container-fluid {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .brand, .footer-copy {
+    margin: 0;
+    line-height: 1;
+  }
+  .brand {
+    font-weight: 900;
+    font-size: 5em;
+    margin-bottom: 0.12em;
+  }
+}

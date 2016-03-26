@@ -1,9 +1,65 @@
+// Functions
+
+// Convert pixels to ems
+// eg. for a relational value of 12px write em(12) when the parent is 16px
+// if the parent is another value say 24px write em(12, 24)
+@function strip-units($value) {
+  @return ($value / ($value * 0 + 1));
+}
+@function em($pxval, $base: $font-size-base) {
+  @if not unitless($pxval) {
+    $pxval: strip-units($pxval);
+  }
+  @if not unitless($base) {
+    $base: strip-units($base);
+  }
+  @return ($pxval / $base) * 1em;
+}
+
+// split width
+@function split($count: 1) {
+  @return (100% / $count);
+}
+
 // Glyphicons font path
-$icon-font-path:        "../fonts/";
+// $icon-font-path:          "../fonts/";
 
 // Grid settings
-$main-sm-columns:       12;
-$sidebar-sm-columns:    4;
+// $main-sm-columns:         12;
+// $sidebar-sm-columns:      4;
 
-// Colors
-$brand-primary:         #27ae60;
+// Overrides
+$brand-primary:           #EA1A66;
+$brand-secondary:         adjust-hue($brand-primary, 200%); // #12bfba
+$gradient-primary:        linear-gradient(135deg, #384B86 0%, #A047AA 33%, #EA1A66 66%, #E35F41 100%);
+
+$font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-base:        "Roboto", $font-family-sans-serif;
+$font-size-base:          12px;
+$line-height-computed:    20px;
+
+$font-size-h1:            em(floor(($font-size-base * 2.6)), $font-size-base);
+$font-size-h2:            em(floor(($font-size-base * 2.15)), $font-size-base);
+$font-size-h3:            em(ceil(($font-size-base * 1.7)), $font-size-base);
+$font-size-h4:            em(ceil(($font-size-base * 1.25)), $font-size-base);
+$font-size-h5:            em($font-size-base, $font-size-base);
+$font-size-h6:            em(ceil(($font-size-base * 0.85)), $font-size-base);
+
+$headings-font-weight:    700;
+
+$border-radius-base:      0;
+$border-radius-large:     0;
+$border-radius-small:     0;
+
+$input-border-focus:      $brand-primary;
+
+$modal-backdrop-opacity:  0.89;
+
+// Custom vars
+$header-height:           50px;
+$header-border:           3px;
+$container-max:           1280px;
+$bounce-timing-function:  cubic-bezier(.32,1.25,.375,1.15);
+$color-facebook:          #3B5998;
+$color-twitter:           #1DA1F2;
+$color-linkedin:          #0274B3;

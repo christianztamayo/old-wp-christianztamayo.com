@@ -38,7 +38,7 @@ function setup() {
 
   // Enable post formats
   // http://codex.wordpress.org/Post_Formats
-  add_theme_support('post-formats', ['aside', 'gallery', 'link', 'image', 'quote', 'video', 'audio']);
+  // add_theme_support('post-formats', ['aside', 'gallery', 'link', 'image', 'quote', 'video', 'audio']);
 
   // Enable HTML5 markup support
   // http://codex.wordpress.org/Function_Reference/add_theme_support#HTML5
@@ -47,6 +47,10 @@ function setup() {
   // Use main stylesheet for visual editor
   // To add custom styles edit /assets/styles/layouts/_tinymce.scss
   add_editor_style(Assets\asset_path('styles/main.css'));
+
+  // Disable wpautop
+  remove_filter( 'the_content', 'wpautop' );
+  remove_filter( 'the_excerpt', 'wpautop' );
 }
 add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
 
@@ -83,9 +87,10 @@ function display_sidebar() {
   isset($display) || $display = !in_array(true, [
     // The sidebar will NOT be displayed if ANY of the following return true.
     // @link https://codex.wordpress.org/Conditional_Tags
-    is_404(),
-    is_front_page(),
-    is_page_template('template-custom.php'),
+    // is_404(),
+    // is_front_page(),
+    // is_page_template('template-custom.php'),
+    true
   ]);
 
   return apply_filters('sage/display_sidebar', $display);

@@ -1,0 +1,77 @@
+///////////////////
+// Media Queries //
+///////////////////
+
+// Small devices
+@media (min-width: $screen-xs) {
+  #mq { top: $screen-xs; }
+  body {
+    font-size: 14px;
+  }
+  .header-text {
+    h1,
+    h2 {
+      display: inline-block;
+    }
+    h1 {
+      margin-right: 5px;
+    }
+  }
+}
+
+// Medium devices
+@media (min-width: $screen-sm) {
+  #mq { top: $screen-sm; }
+  .intro {
+    font-size: 20px;
+  }
+  .section-skills {
+    .section-title {
+      margin-bottom: 0.5em;
+    }
+  }
+    .skills-category {
+      padding-top: 1.5em;
+      padding-bottom: 1.5em;
+      display: flex;
+      align-items: center;
+      .items-title {
+        width: 15%;
+        margin-right: 5%;
+        text-align: right;
+        font-size: $font-size-h3;
+      }
+      .items-list {
+        width: 80%;
+      }
+    }
+  .footer-main {
+    .container-fluid {
+      flex-direction: row;
+    }
+    .brand {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// Large devices
+@media (min-width: $screen-md) {
+  #mq { top: $screen-md; }
+  body {
+    font-size: 16px;
+  }
+  .intro {
+    font-size: 26px;
+  }
+  .section-recent-works {
+    .text-watermark {
+      font-size: 18em;
+    }
+  }
+}
+
+// Largest devices
+@media (min-width: $screen-lg) {
+  #mq { top: $screen-lg; }
+}

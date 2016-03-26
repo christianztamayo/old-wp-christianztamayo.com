@@ -20,6 +20,9 @@ function body_class($classes) {
     $classes[] = 'sidebar-primary';
   }
 
+  // Add loading class for the loader
+  $classes[] = 'loading';
+
   return $classes;
 }
 add_filter('body_class', __NAMESPACE__ . '\\body_class');

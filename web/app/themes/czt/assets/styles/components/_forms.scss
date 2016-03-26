@@ -13,3 +13,75 @@
   @extend .btn;
   @extend .btn-default;
 }
+
+// Contact Form 7 override
+.wpcf7 {
+  .screen-reader-response {
+    @extend .sr-only;
+  }
+
+  .wpcf7-response-output {
+    padding: $alert-padding;
+    margin: 0 0 em(20px);
+    border: 1px solid transparent;
+    border-radius: $alert-border-radius;
+  }
+    .wpcf7-validation-errors,
+    .wpcf7-spam-blocked {
+      background-color: $alert-warning-bg;
+      color: $alert-warning-text;
+      border-color: $alert-warning-border;
+    }
+    .wpcf7-mail-sent-ok {
+      background-color: $alert-success-bg;
+      color: $alert-success-text;
+      border-color: $alert-success-border;
+    }
+    .wpcf7-mail-sent-ng {
+      background-color: $alert-danger-bg;
+      color: $alert-danger-text;
+      border-color: $alert-danger-border;
+    }
+
+  .wpcf7-form-control-wrap {
+    position: relative;
+  }
+
+  .wpcf7-not-valid-tip {
+    display: block;
+    color: $state-danger-text;
+    font-size: 1em;
+  }
+
+  .use-floating-validation-tip .wpcf7-not-valid-tip {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    z-index: 100;
+    border: 1px solid $state-danger-text;
+    background: #fff;
+    padding: .2em .8em;
+  }
+
+  .wpcf7-list-item {
+    margin-left: 0.5em;
+  }
+
+  .wpcf7-display-none {
+    display: none;
+  }
+
+  .ajax-loader {
+    border: none;
+    vertical-align: middle;
+    margin-left: em(4px);
+  }
+
+  .ajax-error {
+    display: none;
+  }
+
+  .placeheld {
+    color: $gray-light;
+  }
+}

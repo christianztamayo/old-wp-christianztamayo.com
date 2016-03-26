@@ -1,0 +1,202 @@
+.section-about {
+  background: #111;
+  color: #fff;
+  text-shadow: 0 0 3px rgba(#000, 0.35);
+  padding-top: 8em;
+  padding-bottom: 8em;
+  font-weight: 100;
+  font-size: em(24px, 16px);
+  line-height: 2;
+  position: relative;
+  .container-fluid {
+    position: relative;
+    max-width: 640px;
+  }
+  .bg,
+  .bg-blur {
+    position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+  }
+  .section-title {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+  }
+  p {
+    margin-bottom: 1em;
+  }
+  a {
+    display: inline-block;
+    line-height: 1.5;
+    padding-left: 0.15em;
+    padding-right: 0.15em;
+    position: relative;
+    color: $gray-dark;
+    text-shadow: none;
+    text-decoration: none;
+    transition: color 0.25s;
+    &:after {
+      content: '';
+      display: block;
+      position: absolute; right: 0; bottom: 0; left: 0;
+      height: 100%;
+      z-index: -1;
+      background: #fff;
+      transition: all 0.25s;
+    }
+    &:hover {
+      color: #fff;
+      &:after {
+        background-color: $brand-primary;
+        height: 3px;
+      }
+    }
+  }
+}
+
+.section-recent-works {
+  background-color: $gray-dark;
+  position: relative;
+  padding-top: 5em;
+  &:before {
+    // slanter
+    content: '';
+    position: absolute;
+    top: 0;
+    background: $gray-dark;
+    width: 100%;
+    height: 300px;
+    transform: skewY(3deg);
+    transform-origin: right top;
+  }
+  .text-watermark {
+    position: absolute; top: 0.18em; right: 0;
+    word-break: break-all;
+    text-align: right;
+    text-transform: uppercase;
+    font-size: 14em;
+    font-weight: 900;
+    line-height: 1;
+    color: #313131;
+    text-shadow: 0 -1px 0 #2a2a2a;
+    user-select: none;
+  }
+  .container-fluid {
+    position: relative;
+  }
+  header {
+    margin-bottom: 5em;
+    position: relative;
+  }
+    .section-title {
+      color: #fff;
+      font-size: 3em;
+    }
+}
+  .recent-works-list {
+    margin-bottom: 5em;
+    .item {
+      margin-bottom: ($grid-gutter-width / 2);
+    }
+    @media (min-width: $screen-xs) {
+      margin-left: -30px;
+      .item-grid {
+        width: (100% / 3);
+      }
+        .item {
+          margin-left: 30px;
+        }
+    }
+  }
+  .btn-more-work {
+    display: block;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 3em;
+    padding: 1em 1em 0.5em;
+    position: relative;
+    border: 0;
+    &, &:after {
+      background-color: $gray-darker;
+      transition: background-color 0.25s;
+    }
+    .btn-text {
+      position: relative;
+      display: inline-block;
+      z-index: 1;
+      transition: transform 0.25s $bounce-timing-function;
+    }
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 2.5em;
+      transform: skewY(-2deg);
+      transform-origin: left top;
+    }
+    &:hover {
+      color: #fff;
+      .btn-text {
+        transform: scale(1.25);
+      }
+      &, &:after {
+        background-color: $brand-primary;
+      }
+    }
+  }
+
+.section-skills {
+  background: url(../images/dots-pattern.png);
+  padding-top: 10em;
+  padding-bottom: 7em;
+  header {
+    margin-bottom: 1em;
+  }
+  .container-fluid {
+    max-width: 1080px;
+  }
+  .spr-skills {
+    margin: .5em .75em;
+    transition: filter 0.15s;
+    filter: grayscale(90%);
+    &.active,
+    &:hover {
+      filter: grayscale(0%);
+    }
+  }
+}
+  .skills-category {
+    padding-top: 3em;
+    padding-bottom: 3em;
+    border-bottom: 1px solid $gray-lighter;
+    &:last-child {
+      border-bottom: 0;
+    }
+    .items-title {
+      font-size: 2.5em;
+      margin-bottom: 1em;
+      font-weight: 300;
+      strong {
+        font-weight: 900;
+      }
+    }
+    .items-list {
+      text-align: center;
+    }
+  }
+
+.section-contact-link {
+  text-align: center;
+  padding-top: 4em;
+  padding-bottom: 4em;
+  background: $gradient-primary;
+  color: #fff;
+  .section-title {
+    margin-bottom: 0.5em;
+  }
+}

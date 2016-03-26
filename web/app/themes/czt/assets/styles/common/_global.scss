@@ -1,1 +1,125 @@
+/////////////
+// Globals //
+/////////////
+
+body {
+  min-width: 300px;
+  &.noScroll,
+  &.loading {
+    @extend .modal-open;
+  }
+}
+#mq {
+  display: none;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+}
+img {
+  max-width: 100%;
+}
+textarea {
+  resize: vertical;
+}
+.brand {
+  span {
+    display: inline-block;
+  }
+}
+.container-fluid {
+  max-width: $container-max;
+}
+.lead {
+  font-size: em(floor(($font-size-base * 1.35)));
+}
+
+::-moz-selection { background-color: $brand-secondary; }
+::selection { background-color: $brand-secondary; }
+
+.header-main,
+.content-main,
+.footer-main {
+  @extend .clearfix;
+}
+
+.flex-push {
+  flex-grow: 1;
+}
+
+// page loader
+body.loading {
+  .loader {
+    // chrome 1px hole fix
+    &:before { left: -1px; }
+    &:after { right: -1px; }
+  }
+  .loader-content {
+    opacity: 1;
+  }
+}
+  .loader {
+    position: fixed; top: 0; right: 0; bottom: 0; left: 0;
+    z-index: $zindex-modal + 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:before,
+    &:after {
+      content: '';
+      display: block;
+      position: absolute; top: 0;
+      width: 100%;
+      height: 100%;
+      background: #111;
+      transition: all 0.5s ease-in-out;
+    }
+    // alt: scale(1.5)
+    &:before { transform: skew(50deg) translateX(100%) scale(2); }
+    &:after { transform: skew(50deg) translateX(-100%) scale(2); }
+    // alt: left/right: 100%
+    &:before { left: 150%; }
+    &:after { right: 150%; }
+  }
+    .loader-content {
+      position: relative;
+      text-align: center;
+      line-height: 1;
+      opacity: 0;
+      transition: opacity 0.5s;
+      z-index: 1;
+    }
+    .loader-spinner {
+      $dimension: 80px;
+      display: inline-block;
+      border: 8px solid $brand-primary;
+      border-right-color: transparent;
+      border-radius: $dimension / 2;
+      width: $dimension;
+      height: $dimension;
+      @extend .animated;
+      @extend .infinite;
+      @extend .spin;
+      animation-duration: 1.25s;
+      animation-timing-function: linear;
+      transform-origin: center;
+    }
+    .loader-me {
+      font-size: 42px;
+      font-weight: 900;
+      position: relative;
+      margin-top: 12px;
+      color: rgba(255,255,255,0.07);
+      font-family: $font-family-sans-serif;
+      span {
+        position: absolute; top: 0; left: 0;
+        display: inline-block;
+        color: #fff;
+        @extend .animated;
+        @extend .infinite;
+        @extend .loadProgress;
+        animation-duration: 3s;
+        animation-timing-function: linear;
+        overflow: hidden;
+      }
+    }
 

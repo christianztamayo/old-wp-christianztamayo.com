@@ -1,0 +1,53 @@
+/////////////
+// Buttons //
+/////////////
+
+.btn {
+  font-weight: 300;
+  padding: em($padding-base-vertical) em($padding-base-horizontal);
+  font-size: 1em;
+  transition: background-color 0.25s, border-color 0.25s;
+}
+  .btn-icon {
+    position: relative;
+    span {
+      transition: all 0.25s;
+      display: inline-block;
+    }
+    i {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 1em;
+      opacity: 0;
+      transition: all 0.25s;
+    }
+    &:hover {
+      span {
+        transform: translateX(-0.55em);
+      }
+      i {
+        opacity: 1;
+        right: 0.45em;
+      }
+    }
+  }
+  .btn-xlg {
+    padding: em($padding-large-vertical) em($padding-large-horizontal);
+    font-size: em($font-size-large * 1.25);
+  }
+  .btn-lg {
+    padding: em($padding-large-vertical) em($padding-large-horizontal);
+    font-size: em($font-size-large);
+  }
+  .btn-sm {
+    padding: em($padding-small-vertical) em($padding-small-horizontal);
+    font-size: em($font-size-small);
+  }
+  .btn-xs {
+    padding: em($padding-xs-vertical) em($padding-xs-horizontal);
+    font-size: em($font-size-small);
+  }
+  .btn-secondary {
+    @include button-variant(#fff, $brand-secondary, darken($brand-secondary, 5%));
+  }

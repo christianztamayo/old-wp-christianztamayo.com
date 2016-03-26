@@ -1,0 +1,102 @@
+.section-contact {
+  margin-top: 4em;
+  margin-bottom: 4em;
+  header {
+   margin-bottom: 3em;
+  }
+  .section-title {
+    margin-top: 0;
+    font-size: 3em;
+  }
+  .alert {
+    margin-bottom: 3em;
+  }
+}
+.form-contact {
+  @extend .clearfix;
+  .form-group {
+    position: relative;
+    margin-top: 2em;
+    margin-bottom: 3em;
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background-color: $brand-primary;
+      transition: width 0.25s;
+    }
+    &.has-input,
+    &.has-focus {
+      label {
+        top: -1em;
+        transform: scale(0.5);
+      }
+    }
+    &.has-focus {
+      &:after {
+        width: 100%;
+      }
+      label {
+        color: $brand-primary;
+      }
+      .form-control {
+        background-color: #f8f8f8;
+      }
+    }
+  }
+    label {
+      position: absolute;
+      z-index: 1;
+      top: 0.5em;
+      left: 0.25em;
+      color: $input-border;
+      font-size: 2em;
+      font-weight: normal;
+      line-height: 1;
+      transform-origin: left center;
+      transition: all 0.25s ease-out;
+      user-select: none;
+    }
+    .form-control {
+      background-color: #fbfbfb;
+      font-size: 2em;
+      height: 2em;
+      padding: 0.5em 0.25em;
+      border-width: 0 0 1px;
+      box-shadow: none !important;
+      transition: background-color 0.25s;
+    }
+    // re-override
+    textarea.form-control {
+      height: auto;
+      resize: none;
+    }
+  // CF 7 overrides
+  .wpcf7-response-output {
+    margin-bottom: 3em;
+  }
+  .wpcf7-form-control-wrap {
+    display: block;
+  }
+  .wpcf7-not-valid {
+    background-color: lighten($alert-danger-bg, 6.5%);
+  }
+  .wpcf7-not-valid-tip {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    margin-top: 0.25em;
+    text-align: right;
+    font-size: em(10px);
+  }
+  .form-group-recaptcha {
+    .wpcf7-not-valid-tip {
+      text-align: left;
+    }
+  }
+}
