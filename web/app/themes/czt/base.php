@@ -21,7 +21,9 @@ use Roots\Sage\Wrapper;
       ?>
       <div class="content">
         <main class="content-main" role="main">
-          <?php include Wrapper\template_path(); ?>
+          <?php if (Setup\has_wrap()) : ?><div class="container-fluid"><?php endif; ?>
+            <?php include Wrapper\template_path(); ?>
+          <?php if (Setup\has_wrap()) : ?></div><?php endif; ?>
         </main>
         <?php if (Setup\display_sidebar()) : ?>
           <aside class="sidebar">

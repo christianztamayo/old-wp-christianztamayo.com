@@ -650,7 +650,7 @@
           .addTo(ScrollMagicController);
       }
     },
-    'single_portfolio': {
+    'single_work': {
       init: function() {
       },
       finalize: function() {

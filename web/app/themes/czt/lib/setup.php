@@ -48,9 +48,32 @@ function setup() {
   // To add custom styles edit /assets/styles/layouts/_tinymce.scss
   add_editor_style(Assets\asset_path('styles/main.css'));
 
+  // Disable built-in responsive images
+  add_filter( 'wp_calculate_image_srcset_meta', '__return_null' );
+
   // Disable wpautop
   remove_filter( 'the_content', 'wpautop' );
   remove_filter( 'the_excerpt', 'wpautop' );
+
+  // Disable search and archive
+  function disable_search( $query, $error = true ) {
+    if ( is_search() || is_archive()  ) {
+      if( is_search() ) {
+        $query->is_search = false;
+        $query->query_vars['s'] = false;
+        $query->query['s'] = false;
+      }
+      if( is_archive() ) {
+        $query->is_archive = false;
+      }
+      // to error
+      if ( $error == true ) {
+        $query->is_404 = true;
+      }
+    }
+  }
+  add_action( 'parse_query', __NAMESPACE__ . '\\disable_search' );
+  add_filter( 'get_search_form', create_function( '$a', "return null;" ) );
 }
 add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
 
@@ -94,6 +117,24 @@ function display_sidebar() {
   ]);
 
   return apply_filters('sage/display_sidebar', $display);
+}
+
+/**
+ * Determine which pages should wrap inside .container-fluid
+ */
+function has_wrap() {
+  static $display;
+
+  isset($display) || $display = !in_array(true, [
+    // The page will NOT be wrapped if ANY of the following return true.
+    // @link https://codex.wordpress.org/Conditional_Tags
+    // is_404(),
+    is_front_page(),
+    is_singular('work'),
+    // is_page_template('template-custom.php'),
+  ]);
+
+  return apply_filters('sage/has_wrap', $display);
 }
 
 /**
