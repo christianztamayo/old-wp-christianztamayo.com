@@ -10,11 +10,15 @@ use Roots\Sage\Assets;
 function setup() {
   // Enable features from Soil when plugin is activated
   // https://roots.io/plugins/soil/
-  add_theme_support('soiled-clean-up');
-  add_theme_support('soiled-nav-walker');
-  add_theme_support('soiled-nice-search');
-  add_theme_support('soiled-jquery-cdn');
-  add_theme_support('soiled-relative-urls');
+  add_theme_support('soiled-clean-up'); // Cleaner WordPress markup
+  add_theme_support('soiled-disable-asset-versioning'); // Disable asset versioning
+  add_theme_support('soiled-disable-trackbacks'); // Disable trackbacks
+  add_theme_support('soiled-google-analytics', 'UA-34299324-5'); // Google Analytics (more info)
+  add_theme_support('soiled-jquery-cdn'); // Load jQuery from the jQuery CDN
+  // add_theme_support('soiled-js-to-footer'); // Move all JS to the footer
+  add_theme_support('soiled-nav-walker'); // Cleaner walker for navigation menus
+  add_theme_support('soiled-nice-search'); // Convert search results from /?s=query to /search/query/
+  add_theme_support('soiled-relative-urls'); // Root relative URLs
 
   // Make theme available for translation
   // Community translations can be found at https://github.com/roots/sage-translations

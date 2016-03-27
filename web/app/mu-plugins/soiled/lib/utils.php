@@ -6,11 +6,15 @@ namespace Roots\Soiled\Utils;
  * Make a URL relative
  */
 function root_relative_url($input) {
+  if (is_feed()) {
+    return $input;
+  }
+
   $url = parse_url($input);
   if (!isset($url['host']) || !isset($url['path'])) {
     return $input;
   }
-  $site_url = parse_url(network_site_url());  // falls back to site_url
+  $site_url = parse_url(network_home_url());  // falls back to home_url
 
   if (!isset($url['scheme'])) {
     $url['scheme'] = $site_url['scheme'];

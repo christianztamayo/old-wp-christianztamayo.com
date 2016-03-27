@@ -19,8 +19,7 @@ function load_script() {
     <?php if ($loadGA) : ?>
       window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
     <?php else : ?>
-      (function(s,o,i,l){s.ga=function(){s.ga.q.push(arguments);if(o['log'])o.log(i+l.call(arguments))}
-      s.ga.q=[];s.ga.l=+new Date;}(window,console,'Google Analytics: ',[].slice))
+      !function(a,b,c,d){a.ga=function(){a.ga.q.push(arguments),b.log&&b.log(c+d.call(arguments))},a.ga.q=[],a.ga.l=+new Date}(window,console,"Google Analytics: ",[].slice);
     <?php endif; ?>
     ga('create','<?= $gaID; ?>','auto');ga('send','pageview')
   </script>
