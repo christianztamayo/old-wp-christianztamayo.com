@@ -10,6 +10,8 @@
  * always reference jQuery with $, even when in .noConflict() mode.
  * ======================================================================== */
 
+/* jshint latedef: nofunc */
+
 (function($, Tween, Timeline) {
   'use strict';
 
@@ -155,7 +157,7 @@
       return {
         init: init
       };
-    }());
+    })();
 
     // Load fonts
     function webFont() {
@@ -219,13 +221,13 @@
     function stickyHeader() {
       headroom = new Headroom(
         $headerBar.get(0), {
-          offset : function() {
+          offset : (function() {
             // headroom overrides
             if($('.intro').length) {
               return $window.height() + 300;
             }
             return 300;
-          }(),
+          })(),
           tolerance: 5,
           classes : {
             initial : 'header-bar-init',
@@ -295,7 +297,7 @@
           new Timeline()
             .fromTo($navClose, 0.25, { rotation: 45 }, { rotation: '+=90' });
         });
-      }());
+      })();
     }
 
     // Intro section resize
@@ -321,16 +323,8 @@
       if(!$el.length) {
         return;
       }
-      $window.on('resize', attachEvent);
-      attachEvent();
-      function attachEvent() {
-        if(MQ === 0 || MQ === breakpoint.xs || isTouch) {
-          $el.children().on('click', overlayTapEvent);
-        } else {
-          $el.children().off('click', overlayTapEvent).removeClass('tapped');
-        }
-      }
-      function overlayTapEvent(e) {
+
+      var overlayTapEvent = function(e) {
         var that = $(this);
         if(that.hasClass('tapped')) {
           return;
@@ -342,7 +336,17 @@
           that.closest($el).find('.tapped').not(that).removeClass('tapped');
           that.toggleClass('tapped');
         }
-      }
+      };
+      var attachEvent = function() {
+        if(MQ === 0 || MQ === breakpoint.xs || isTouch) {
+          $el.children().on('click', overlayTapEvent);
+        } else {
+          $el.children().off('click', overlayTapEvent).removeClass('tapped');
+        }
+      };
+
+      $window.on('resize', attachEvent);
+      attachEvent();
     }
 
     function smoothScroll() {
@@ -352,7 +356,7 @@
       $window.on('mousewheel DOMMouseScroll', function(e) {
         var delta = e.originalEvent.wheelDelta/120 || -e.originalEvent.detail/3;
         // trackpad checker (perhaps)
-        if(delta % 1 != 0 || delta % 1 == -0) {
+        if(delta % 1 !== 0 || delta % 1 === -0) {
           return;
         }
         e.preventDefault();
@@ -386,7 +390,7 @@
       updateMediaQuery: updateMediaQuery,
       Nav: Nav
     };
-  }());
+  })();
 
   // Use this variable to set up the common and page specific functions. If you
   // rename this variable, you will also need to rename the namespace below.
@@ -584,7 +588,7 @@
           onComplete: function() {
             Tween.set($recentWorkItems, { clearProps: 'all' });
           }
-        }).staggerFrom($recentWorkItems, 1, { scale: 0, opacity: 0, ease: Power2.easeOut }, 0.2)
+        }).staggerFrom($recentWorkItems, 1, { scale: 0, opacity: 0, ease: Power2.easeOut }, 0.2);
 
         new ScrollMagic.Scene({
           triggerElement: $recentWorks.get(0),
@@ -608,11 +612,11 @@
         var $skills = $('.section-skills'),
             $skillsItems = $skills.find('.spr-skills');
 
-        $skillsItems.sort( function(){ return ( Math.round( Math.random() ) - 0.5 ) } );
+        $skillsItems.sort( function(){ return ( Math.round( Math.random() ) - 0.5 ); } );
 
         var skillsContentTween = new Timeline()
           .staggerFrom($skills.find('.items-title'), 1, { x: -500 }, 0.25, 0)
-          .staggerFrom($skillsItems, 0.5, { scale: 0, ease: Back.easeOut.config(2) }, 0.08, 0.5)
+          .staggerFrom($skillsItems, 0.5, { scale: 0, ease: Back.easeOut.config(2) }, 0.08, 0.5);
 
         new ScrollMagic.Scene({
           triggerElement: $skills.get(0),
@@ -668,7 +672,7 @@
         var $portContent = $('.portfolio-content');
         var skillsContentTween = new Timeline()
           .from($portContent.find('.col-sm-7'), 0.75, { x: -800, opacity: 0, ease: Power2.easeOut }, 0)
-          .from($portContent.find('.col-sm-4'), 0.75, { x: 800, opacity: 0, ease: Power2.easeOut }, 0)
+          .from($portContent.find('.col-sm-4'), 0.75, { x: 800, opacity: 0, ease: Power2.easeOut }, 0);
 
         new ScrollMagic.Scene({
           triggerElement: $portContent.get(0),
@@ -720,7 +724,7 @@
         return html.trim().replace(/ /g, '\u00a0').replace(/(.)/g, '<span>$1</span>');
       });
     });
-  }
+  };
 
   $.fn.materialLabels = function() {
     return this.each(function() {
@@ -734,9 +738,9 @@
           }
           if(e.type === 'focus') { $parent.addClass('has-focus'); }
           if(e.type === 'blur') { $parent.removeClass('has-focus'); }
-        }).trigger('input')
+        }).trigger('input');
     });
-  }
+  };
 
   function randomNumber(min, max){
     return Math.floor(Math.random() * (1 + max - min) + min);
@@ -764,7 +768,7 @@
       }
     }
     return this;
-  }
+  };
 
   // Load Events
   $(document).ready(UTIL.loadEvents);
