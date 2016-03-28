@@ -38,7 +38,6 @@
     "vlucas/phpdotenv": "^2.0.1",
     "johnpbloch/wordpress": "4.4.2",
     "oscarotero/env": "^1.0",
-    "roots/wp-password-bcrypt": "1.0.0",
     "wpackagist-plugin/advanced-excerpt": "^4.2.3",
     "wpackagist-plugin/better-search-replace": "^1.2.9",
     "wpackagist-plugin/contact-form-7": "^4.3.1",
