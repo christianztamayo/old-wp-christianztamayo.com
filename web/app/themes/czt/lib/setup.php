@@ -77,7 +77,7 @@ function setup() {
     }
   }
   add_action( 'parse_query', __NAMESPACE__ . '\\disable_search' );
-  add_filter( 'get_search_form', create_function( '$a', "return null;" ) );
+  add_filter( 'get_search_form', '__return_null' );
 }
 add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
 

@@ -4,7 +4,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: 404.php:4
-msgid "Sorry, but the page you were trying to view does not exist."
+msgid "It looks like nothing was found at this location."
 msgstr ""
 
 #: base.php:14

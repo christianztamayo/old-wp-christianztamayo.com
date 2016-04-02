@@ -120,3 +120,18 @@
 @import "pages/home";
 @import "pages/portfolio";
 @import "pages/contact";
+
+.section-404 {
+  padding-top: 3em;
+  padding-bottom: 3em;
+  text-align: center;
+  .section-title {
+    font-size: 9em;
+    margin-bottom: 0.1em;
+    font-weight: 100;
+  }
+  .section-text {
+    font-size: 1.5em;
+    margin-bottom: 1.5em;
+  }
+}
