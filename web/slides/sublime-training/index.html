@@ -1,0 +1,831 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Sublime Tips and Tricks - A guide to Sublime Text</title>
+
+		<meta name="description" content="This guide is intended for web developers who want to escape the complexity of IDE's (Integrated Development Environment) and want to have a lightning-fast, extensible, and compact web development tool.">
+		<meta name="author" content="Christian Z. Tamayo">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../_assets/css/reveal.min.css">
+		<link rel="stylesheet" href="../_assets/css/theme/default.css" id="theme">
+		<style>
+			.text-green { color: #9EE22D }
+			.text-sky { color: #66D9D3 }
+			.text-red { color: #F52749 }
+			.text-purple { color: #AE81FF }
+			.text-heading { color: orange !important; text-shadow: 2px 2px 2px #222 !important }
+			.monokai { text-shadow: 2px 2px 2px rgba(0,0,0,0.5) !important; }
+			.navigate-down {display: block; }
+			pre .coffeescript .javascript, pre .javascript .xml, pre .tex .formula, pre .xml .javascript, pre .xml .vbscript, pre .xml .css, pre .xml .cdata {
+				opacity: 1 !important;
+			}
+			pre ::selection {
+				background: #ff5e99;
+			}
+			.emmet-table table,
+			.emmet-table-font table {
+				margin-bottom: 20px;
+			}
+			.emmet-table {
+				-webkit-column-count: 2;
+				-moz-column-count: 2;
+				column-count: 2;
+			}
+			.emmet-table,
+			.emmet-table-font {
+				font-size: 60% !important;
+				line-height: 120% !important;
+			}
+			.inline-code {
+				padding: 2px 4px;
+				font-size: 90%;
+				color: #c7254e;
+				white-space: nowrap;
+				background-color: #2D2D2D;
+				border-radius: 4px;
+			}
+			#sublime-site {
+				font-size: 1ex;
+				border: 1px solid #444;
+				background: #ddd;
+				border-radius: 5px;
+				padding: 15px 20px;
+				cursor: pointer;
+			}
+			.caret {
+				border-left: 2px solid #578fe3 !important;
+				margin: 0 2px -.1em !important;
+				display: inline-block !important;
+				height: 1.1em !important;
+			}
+			.tabstop {
+				background: #8eb632 !important;
+				display: inline-block !important;
+				padding: 0 5px !important;
+				color: #fff !important;
+				text-shadow: 1px 1px 1px rgba(0,0,0,.5) !important;
+				-webkit-border-radius: 3px !important;
+				-moz-border-radius: 3px !important;
+				border-radius: 4px !important;
+			}
+			.img-neutral {
+				border: none !important;
+				-webkit-box-shadow: none !important;
+				box-shadow: none !important;
+				background: none !important;
+			}
+			#rainbow-dude {
+				position: absolute;
+				bottom: 0;
+				right: 0;
+			}
+			#sublime-logo {
+			}
+			#sublime-logo:hover {
+				-webkit-animation: sublimey 1s infinite ease-in-out;
+				-moz-animation:    sublimey 1s infinite ease-in-out;
+				-o-animation:      sublimey 1s infinite ease-in-out;
+				animation:         sublimey 1s infinite ease-in-out;
+			}
+			@-webkit-keyframes sublimey {
+				0%   { -webkit-transform: scale(1); -ms-transform: scale(1); -o-transform: scale(1); transform: scale(1); }
+				50% { -webkit-transform: scale(1.3); -ms-transform: scale(1.3); -o-transform: scale(1.3); transform: scale(1.3); }
+				100% { -webkit-transform: scale(1); -ms-transform: scale(1); -o-transform: scale(1); transform: scale(1); }
+			}
+			@-moz-keyframes sublimey {
+				0%   { -webkit-transform: scale(1); -ms-transform: scale(1); -o-transform: scale(1); transform: scale(1); }
+				50% { -webkit-transform: scale(1.3); -ms-transform: scale(1.3); -o-transform: scale(1.3); transform: scale(1.3); }
+				100% { -webkit-transform: scale(1); -ms-transform: scale(1); -o-transform: scale(1); transform: scale(1); }
+			}
+			@-o-keyframes sublimey {
+				0%   { -webkit-transform: scale(1); -ms-transform: scale(1); -o-transform: scale(1); transform: scale(1); }
+				50% { -webkit-transform: scale(1.3); -ms-transform: scale(1.3); -o-transform: scale(1.3); transform: scale(1.3); }
+				100% { -webkit-transform: scale(1); -ms-transform: scale(1); -o-transform: scale(1); transform: scale(1); }
+			}
+			@keyframes sublimey {
+				0%   { -webkit-transform: scale(1); -ms-transform: scale(1); -o-transform: scale(1); transform: scale(1); }
+				50% { -webkit-transform: scale(1.3); -ms-transform: scale(1.3); -o-transform: scale(1.3); transform: scale(1.3); }
+				100% { -webkit-transform: scale(1); -ms-transform: scale(1); -o-transform: scale(1); transform: scale(1); }
+			}
+		</style>
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../_assets/lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = '../_assets/css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="../_assets/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<a href="#" class="navigate-next ">
+						<img src="sublime-logo.png" id="sublime-logo" class="img-neutral" alt="Sublime Logo">
+					</a>
+				</section>
+
+				<section>
+					<h1 class="text-heading">Sublime Tips and Tricks</h1>
+					<h2 class="monokai">A guide to Sublime Text</h2>
+				</section>
+
+				<section>
+					<h2 class="text-heading">Agenda</h2>
+					<ol>
+						<li class="monokai">What is Sublime Text?</li>
+						<li class="monokai">Why Sublime Text?</li>
+						<li class="monokai">The Package Manager</li>
+						<li class="monokai">Tips and Tricks</li>
+					</ol>
+				</section>
+
+				<section>
+					<h1 class="text-heading">What is Sublime Text?</h1>
+				</section>
+				<section>
+					<section>
+						<p>Let's ask Wikipedia:</p>
+						<blockquote>
+							<p>Sublime Text is a cross-platform text and source code editor, with a Python application programming interface (API). Sublime Text is proprietary software. Its functionality is extendable with plugins. Most of the extending packages have free-software licenses and are community-built and maintained. Sublime Text lacks graphical setting dialogues and is entirely configured by editing text files.</p>
+						</blockquote>
+						<a href="#" class="navigate-down enabled">&#8595;</a>
+					</section>
+					<section>
+						<p class="monokai">It's that dark multi-colored text editor that's getting attention lately, and used by modern developers around the world.</p>
+						<p><img src="sublime-0.png" class="img-neutral" alt=""></p>
+						<img src="meme-rainbow.png" id="rainbow-dude" class="img-neutral fragment" alt="">
+					</section>
+				</section>
+
+				<section>
+					<h1 class="text-heading">Why Sublime Text?</h1>
+				</section>
+				<section>
+					<section>
+						<h2><span class="text-heading">Sublime Text</span> is a sophisticated text editor for code, markup and prose.</h2>
+						<h2 class="fragment">It is <strong class="text-red">NOT</strong> an IDE.</h2>
+						<h2><span class="fragment">But rather,</span> <span class="fragment">an <span class="monokai">ultra-fast</span>,</span> <span class="fragment"><span class="monokai">compact</span>,</span> <span class="fragment">and <span class="monokai">extensible</span></span> <span class="fragment">text editor.</span></h2>
+					</section>
+					<section>
+						<h2>And, it's super COOL.</h2>
+						<p><img src="sublime-3.png" class="img-neutral" alt="SUPER COOL" style="-webkit-transform: scale(1.15); -ms-transform: scale(1.15); -o-transform: scale(1.15); transform: scale(1.15);"></p>
+					</section>
+					<section>
+						<h3><em>If you're an IDE-type of developer, or need to work with projects dependent on IDE functionalities (e.g. iOS, Android, etc.), then stick with IDE's. Else, use a text editor for quick edits.</em></h3>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2 class="text-heading">The Features &mdash; again from Wikipedia:</h2>
+						<ul>
+							<li class="fragment">"<span class="monokai">Goto Anything</span>," quick navigation to files, symbols, or lines</li>
+							<li class="fragment">"<span class="monokai">Command palette</span>" uses adaptive matching for quick keyboard invocation of arbitrary commands</li>
+							<li class="fragment"><span class="monokai">Multiple selections</span>: simultaneously make the same interactive changes to multiple selected areas</li>
+							<li class="fragment">Python-based plugin API</li>
+							<li class="fragment">Project-specific preferences</li>
+							<li class="fragment">Extensive customizability via <span class="monokai">JSON settings files</span>, including project-specific and platform-specific settings</li>
+							<li class="fragment"><span class="monokai">Cross platform</span> (Windows, OS X, Linux)</li>
+							<li class="fragment">Compatible with many language grammars from Textmate.</li>
+						</ul>
+						<a href="#" class="navigate-down enabled">&#8595;</a>
+					</section>
+					<section>
+						<button id="sublime-site">Show Features from http://www.sublimetext.com/</button>
+						<iframe data-src="http://www.sublimetext.com/" style="width:100%;height:768px"></iframe>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2 class="text-heading">Goto Anything</h2>
+						<ul>
+							<li class="fragment">Super quick file search and navigation</li>
+							<li class="fragment">Instantly jump to symbols, lines, or words.</li>
+							<li class="fragment"><span class="monokai">@</span> to jump to symbols</li>
+							<li class="fragment"><span class="monokai">#</span> to search within the file</li>
+							<li class="fragment"><span class="monokai">:</span> to go to a line number</li>
+						</ul>
+						<a href="#" class="navigate-down enabled">&#8595;</a>
+					</section>
+					<section>
+						<h3>Example &quot;jump to symbol&quot;</h3>
+						<p><img src="sublime-4.png" class="img-neutral" alt=""></p>
+					</section>
+					<section>
+						<h3>Example &quot;search within a file&quot;</h3>
+						<p><img src="sublime-5.png" class="img-neutral" alt=""></p>
+					</section>
+					<section>
+						<h3>And it takes an average of 3 seconds to get to those!</h3>
+						<p><img src="meme-too-fast.jpg" class="img-neutral" alt=""></p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2 class="text-heading">Command Palette</h2>
+						<ul>
+							<li class="fragment">Holds frequently/infrequently used functionality</li>
+							<li class="fragment">Never have to navigate through the menus</li>
+							<li class="fragment">Never have to remember obscure key bindings (though key bindings will take you one step further)</li>
+						</ul>
+						<a href="#" class="navigate-down enabled">&#8595;</a>
+					</section>
+					<section>
+						<h2>Example #1</h2>
+						<p><img src="sublime-6.png" class="img-neutral" alt=""></p>
+					</section>
+					<section>
+						<h2>Example #1 Result</h2>
+						<p><img src="sublime-6b.png" class="img-neutral" alt=""></p>
+					</section>
+					<section>
+						<h2>Example #2</h2>
+						<p><img src="sublime-7.png" class="img-neutral" alt=""></p>
+					</section>
+					<section>
+						<h2>Example #2 Result</h2>
+						<p><img src="sublime-7b.png" class="img-neutral" alt=""></p>
+					</section>
+				</section>
+
+				<section>
+					<h2 class="text-heading">Multiple Selections</h2>
+					<h3 class="monokai">Make ten changes at the same time, not one change ten times.</h3>
+					<p>Multiple selections allow you to interactively change many lines at once, rename variables with ease, and manipulate files faster than ever.</p>
+				</section>
+
+				<section>
+					<h1 class="text-heading">The Package Manager</h1>
+				</section>
+
+				<section>
+					<section>
+						<h2 class="text-heading">Sublime Text can be easily extended through the package manager.</h2>
+						<p>This includes things like themes, snippets, to full-blown functionalities not found on the original installation.</p>
+						<a href="#" class="navigate-down enabled">&#8595;</a>
+					</section>
+					<section>
+						<p>Some notable plugins:</p>
+						<ul>
+							<li class="monokai">Emmet (formerly Zen Coding)</li>
+							<li class="monokai">jQuery (highlight &amp; snippets)</li>
+							<li class="monokai">LESS and SASS</li>
+							<li class="monokai">LiveStyle</li>
+							<li class="monokai">HTMLPrettify</li>
+							<li class="monokai">CSSComb</li>
+							<li class="monokai">AngularJS</li>
+							<li class="monokai">SublimeGit</li>
+							<li class="monokai">BracketHighlighter</li>
+							<li class="monokai">Bootstrap 3 Snippets</li>
+						</ul>
+						<a href="#" class="navigate-down enabled">&#8595;</a>
+					</section>
+					<section>
+						<p>For more information on the official repository, visit <a href="https://sublime.wbond.net/">https://sublime.wbond.net/</a>.</p>
+						<p><img src="sublime-8.png" class="img-neutral" alt=""></p>
+					</section>
+				</section>
+
+				<section>
+					<h1 class="text-heading">Tips and Tricks</h1>
+				</section>
+
+				<section>
+					<section>
+						<h2 class="text-heading">
+							Emmet<br>
+							<small>(formerly Zen Coding)</small>
+						</h2>
+						<p>An essential toolkit for web developers that greatly improves HTML &amp; CSS workflow</p>
+					</section>
+				</section>
+				<section>
+					<h1 class="text-heading">Emmet Syntax</h1>
+				</section>
+				<section>
+					<section>
+						<h3>Child: ></h3>
+						<p><code>nav>ul>li</code></p>
+						<pre><code data-trim>
+<nav>
+    <ul>
+        <li></li>
+    </ul>
+</nav>
+						</code></pre>
+					</section>
+					<section>
+						<h3>Sibling: +</h3>
+						<p><code>div+p+bq</code></p>
+						<pre><code data-trim>
+<div></div>
+<p></p>
+<blockquote></blockquote>
+						</code></pre>
+					</section>
+					<section>
+						<h3>Climb-up: ^</h3>
+						<p><code>div+div>p>span+em^bq</code></p>
+						<pre><code data-trim>
+<div></div>
+<div>
+    <p><span></span><em></em></p>
+    <blockquote></blockquote>
+</div>
+						</code></pre>
+					</section>
+					<section>
+						<h3>Grouping: ()</h3>
+						<p><code>div>(header>ul>li*2>a)+footer>p</code></p>
+						<pre><code data-trim>
+<div>
+    <header>
+        <ul>
+            <li><a href=""></a></li>
+            <li><a href=""></a></li>
+        </ul>
+    </header>
+    <footer>
+        <p></p>
+    </footer>
+</div>
+						</code></pre>
+					</section>
+					<section>
+						<h3>Multiplication: *</h3>
+						<p><code>ul>li*5</code></p>
+						<pre><code data-trim>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+						</code></pre>
+					</section>
+					<section>
+						<h3>Item numbering: $</h3>
+						<p><code>ul>li.item$*5</code></p>
+						<pre><code data-trim>
+<ul>
+    <li class="item1"></li>
+    <li class="item2"></li>
+    <li class="item3"></li>
+    <li class="item4"></li>
+    <li class="item5"></li>
+</ul>
+						</code></pre>
+						<p><code>h$[title=item$]{Header $}*3</code></p>
+						<pre><code data-trim>
+<h1 title="item1">Header 1</h1>
+<h2 title="item2">Header 2</h2>
+<h3 title="item3">Header 3</h3>
+						</code></pre>
+					</section>
+					<section>
+						<h3>ID and CLASS attributes</h3>
+						<p><code>form#search.wide</code></p>
+						<pre><code data-trim>
+<form id="search" class="wide"></form>
+						</code></pre>
+						<p><code>p.class1.class2.class3</code></p>
+						<pre><code data-trim>
+<p class="class1 class2 class3"></p>
+						</code></pre>
+					</section>
+					<section>
+						<h3>Custom attributes</h3>
+						<p><code>p[title="Hello world"]</code></p>
+						<pre><code data-trim>
+<p title="Hello world"></p>
+						</code></pre>
+						<p><code>[a='value1' b="value2"]</code></p>
+						<pre><code data-trim>
+<div a="value1" b="value2"></div>
+						</code></pre>
+					</section>
+					<section>
+						<h3>Text: {}</h3>
+						<p><code>a{Click me}</code></p>
+						<pre><code data-trim>
+<a href="">Click me</a>
+						</code></pre>
+						<p><code>p>{Click }+a{here}+{ to continue}</code></p>
+						<pre><code data-trim>
+<p>Click <a href="">here</a> to continue</p>
+						</code></pre>
+					</section>
+					<section>
+						<h3>Implicit tag names</h3>
+						<p><code>em>.class</code></p>
+						<pre><code data-trim>
+<em><span class="class"></span></em>
+						</code></pre>
+						<p><code>ul>.class</code></p>
+						<pre><code data-trim>
+<ul>
+    <li class="class"></li>
+</ul>
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<h1 class="text-heading">Emmet HTML</h1>
+				</section>
+				<section>
+					<section>
+						<p><code>! / html:5</code></p>
+						<pre><code data-trim>
+&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+						</code></pre>
+					</section>
+					<section>
+						<p><code>link:css</code></p>
+						<pre><code data-trim>
+&lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot; /&gt;
+						</code></pre>
+						<p><code>script</code></p>
+						<pre><code data-trim>
+<script></script>
+						</code></pre>
+					</section>
+					<section>
+						<p><code>a</code></p>
+						<pre><code data-trim>
+<a href=""></a>
+						</code></pre>
+						<p><code>img</code></p>
+						<pre><code data-trim>
+<img src="" alt="" />
+						</code></pre>
+					</section>
+					<section>
+						<p><code>form</code></p>
+						<pre><code data-trim>
+<form action=""></form>
+						</code></pre>
+						<p><code>form:get</code></p>
+						<pre><code data-trim>
+<form action="" method="get"></form>
+						</code></pre>
+						<p><code>form:post</code></p>
+						<pre><code data-trim>
+<form action="" method="post"></form>
+						</code></pre>
+					</section>
+					<section>
+						<p><code>inp</code></p>
+						<pre><code data-trim>
+<input type="text" name="" id="" />
+						</code></pre>
+						<p><code>input:hidden</code></p>
+						<pre><code data-trim>
+<input type="hidden" name="" />
+						</code></pre>
+						<p><code>input:submit / input:s</code></p>
+						<pre><code data-trim>
+<input type="submit" value="" />
+						</code></pre>
+					</section>
+					<section>
+						<p><code>ol+ / ol>li</code></p>
+						<pre><code data-trim>
+<ol>
+    <li></li>
+</ol>
+						</code></pre>
+						<p><code>ul+ / ul>li</code></p>
+						<pre><code data-trim>
+<ul>
+    <li></li>
+</ul>
+						</code></pre>
+					</section>
+					<section>
+						<p><code>select</code></p>
+						<pre><code data-trim>
+<select name="" id=""></select>
+						</code></pre>
+						<p><code>option</code></p>
+						<pre><code data-trim>
+<option value=""></option>
+						</code></pre>
+						<p><code>textarea</code></p>
+						<pre><code data-trim>
+<textarea name="" id="" cols="30" rows="10"></textarea>
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<h1 class="text-heading">Emmet CSS</h1>
+				</section>
+				<section>
+					<p>CSS module uses fuzzy search to find unknown abbreviations, e.g. <code class="inline-code">ov:h</code> == <code class="inline-code">ov-h</code> == <code class="inline-code">ovh</code> == <code class="inline-code">oh</code>.</p>
+					<p>If abbreviation wasn’t found, it is transformed into property name: <code class="inline-code">foo-bar</code> → <code class="inline-code">foo-bar: |;</code></p>
+					<p>You can prefix abbreviations with hyphen to produce vendor-prefixed properties: <code class="inline-code">-foo</code></p>
+				</section>
+				<section>
+					<section>
+						<div class="emmet-table">
+						<table>
+							<tr><td>pos</td><td><code class="inline-code">position:relative;</code></td></tr>
+							<tr><td>pos:s</td><td><code class="inline-code">position:static;</code></td></tr>
+							<tr><td>pos:a</td><td><code class="inline-code">position:absolute;</code></td></tr>
+							<tr><td>pos:r</td><td><code class="inline-code">position:relative;</code></td></tr>
+							<tr><td>pos:f</td><td><code class="inline-code">position:fixed;</code></td></tr>
+							<tr><td>t</td><td><code class="inline-code">top:;</code></td></tr>
+							<tr><td>r</td><td><code class="inline-code">right:;</code></td></tr>
+							<tr><td>b</td><td><code class="inline-code">bottom:;</code></td></tr>
+							<tr><td>l</td><td><code class="inline-code">left:;</code></td></tr>
+							<tr><td>fl</td><td><code class="inline-code">float:left;</code></td></tr>
+							<tr><td>fl:n</td><td><code class="inline-code">float:none;</code></td></tr>
+							<tr><td>fl:l</td><td><code class="inline-code">float:left;</code></td></tr>
+							<tr><td>fl:r</td><td><code class="inline-code">float:right;</code></td></tr>
+							<tr><td>d</td><td><code class="inline-code">display:block;</code></td></tr>
+							<tr><td>d:n</td><td><code class="inline-code">display:none;</code></td></tr>
+							<tr><td>d:b</td><td><code class="inline-code">display:block;</code></td></tr>
+							<tr><td>d:i</td><td><code class="inline-code">display:inline;</code></td></tr>
+							<tr><td>d:ib</td><td><code class="inline-code">display:inline-block;</code></td></tr>
+							<tr><td>v</td><td><code class="inline-code">visibility:hidden;</code></td></tr>
+							<tr><td>v:v</td><td><code class="inline-code">visibility:visible;</code></td></tr>
+							<tr><td>v:h</td><td><code class="inline-code">visibility:hidden;</code></td></tr>
+							<tr><td>v:c</td><td><code class="inline-code">visibility:collapse;</code></td></tr>
+							<tr><td>ov</td><td><code class="inline-code">overflow:hidden;</code></td></tr>
+							<tr><td>ov:v</td><td><code class="inline-code">overflow:visible;</code></td></tr>
+							<tr><td>ov:h</td><td><code class="inline-code">overflow:hidden;</code></td></tr>
+							<tr><td>ov:s</td><td><code class="inline-code">overflow:scroll;</code></td></tr>
+							<tr><td>ov:a</td><td><code class="inline-code">overflow:auto;</code></td></tr>
+							<tr><td>cur:d</td><td><code class="inline-code">cursor:default;</code></td></tr>
+							<tr><td>cur:p</td><td><code class="inline-code">cursor:pointer;</code></td></tr>
+							<tr><td>c</td><td><code class="inline-code">color:#000;</code></td></tr>
+							<tr><td>c:r</td><td><code class="inline-code">color:rgb(0, 0, 0);</code></td></tr>
+							<tr><td>c:ra</td><td><code class="inline-code">color:rgba(0, 0, 0, .5);</code></td></tr>
+							<tr><td>bgc</td><td><code class="inline-code">background-color:#fff</code></td></tr>
+							<tr><td>ta:l</td><td><code class="inline-code">text-align:left;</code></td></tr>
+							<tr><td>ta:c</td><td><code class="inline-code">text-align:center;</code></td></tr>
+							<tr><td>ta:r</td><td><code class="inline-code">text-align:right;</code></td></tr>
+							<tr><td>ta:j</td><td><code class="inline-code">text-align:justify;</code></td></tr>
+							<tr><td>bdrs</td><td><code class="inline-code">border-radius:;</code></td></tr>
+							<tr><td>lis:n</td><td><code class="inline-code">list-style:none;</code></td></tr>
+							<tr><td>miw</td><td><code class="inline-code">min-width:;</code></td></tr>
+							<tr><td>mih</td><td><code class="inline-code">min-height:;</code></td></tr>
+							<tr><td>!</td><td><code class="inline-code">!important</code></td></tr>
+						</table>
+						</div>
+					</section>
+					<section>
+						<p><code>ff:a</code></p>
+						<pre><code data-trim>
+font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+						</code></pre>
+						<p><code>ff:t</code></p>
+						<pre><code data-trim>
+font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
+						</code></pre>
+						<p><code>ff:v</code></p>
+						<pre><code data-trim>
+font-family: Verdana, Geneva, sans-serif;
+						</code></pre>
+					</section>
+					<section>
+						<p><code>@f+</code></p>
+						<pre><code data-trim>
+@font-face {
+    font-family: 'FontName';
+    src: url('FileName.eot');
+    src: url('FileName.eot?#iefix') format('embedded-opentype'),
+         url('FileName.woff') format('woff'),
+         url('FileName.ttf') format('truetype'),
+         url('FileName.svg#FontName') format('svg');
+    font-style: normal;
+    font-weight: normal;
+}
+						</code></pre>
+					</section>
+					<section>
+						<p><code>@kf</code></p>
+						<pre><code data-trim>
+@-webkit-keyframes identifier {
+    from {  }
+    to {  }
+}
+@-o-keyframes identifier {
+    from {  }
+    to {  }
+}
+@-moz-keyframes identifier {
+    from {  }
+    to {  }
+}
+@keyframes identifier {
+    from {  }
+    to {  }
+}
+
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<h3>For a full reference of Emmet snippets, visit:</h3>
+					<h2><a href="http://docs.emmet.io/cheat-sheet/">http://docs.emmet.io/cheat-sheet/</a></h2>
+				</section>
+
+				<section>
+					<h2 class="text-heading">Keyboard Shortcuts</h2>
+				</section>
+				<section>
+					<section>
+						<h3 class="monokai">Editing</h3>
+						<div class="emmet-table">
+						<table>
+							<tr><td><code class="inline-code">Ctrl+C</code></td> <td>copy current line (if no selection)</td></tr>
+							<tr><td><code class="inline-code">Ctrl+X</code></td> <td>cut current line (if no selection)</td></tr>
+							<tr><td><code class="inline-code">Ctrl+⇧+K</code></td> <td>delete line</td></tr>
+							<tr><td><code class="inline-code">Ctrl+↩</code></td> <td>insert line after</td></tr>
+							<tr><td><code class="inline-code">Ctrl+⇧+↩</code></td> <td>insert line before</td></tr>
+							<tr><td><code class="inline-code">Ctrl+⇧+↑</code></td> <td>move line (or selection) up</td></tr>
+							<tr><td><code class="inline-code">Ctrl+L</code></td> <td>select line (repeat to select next lines)</td></tr>
+							<tr><td><code class="inline-code">Ctrl+D</code></td> <td>select word (repeat select others occurrences in context for multiple editing)</td></tr>
+							<tr><td><code class="inline-code">Ctrl+M</code></td> <td>jump to closing bracket for current code, repeat to jump to opening bracket</td></tr>
+							<tr><td><code class="inline-code">Ctrl+⇧+M</code></td> <td>select all contents of the current brackets (curly brackets, square brackets, parentheses)</td></tr>
+							<tr><td><code class="inline-code">Ctrl+KK</code></td> <td>delete from cursor to end of line</td></tr>
+							<tr><td><code class="inline-code">Ctrl+K+⌫</code></td> <td>delete from cursor to start of line</td></tr>
+							<tr><td><code class="inline-code">Ctrl+]</code></td> <td>indent current line(s)</td></tr>
+							<tr><td><code class="inline-code">Ctrl+[</code></td> <td>un-indent current line(s)</td></tr>
+							<tr><td><code class="inline-code">Ctrl+⇧+D</code></td> <td>duplicate line(s)</td></tr>
+							<tr><td><code class="inline-code">Ctrl+J</code></td> <td>join line below to the end of the current line</td></tr>
+							<tr><td><code class="inline-code">Ctrl+ /</code></td> <td>comment/un-comment current line</td></tr>
+							<tr><td><code class="inline-code">Ctrl+⇧+/</code></td> <td>block comment current selection</td></tr>
+							<tr><td><code class="inline-code">Ctrl+Y</code></td> <td>redo, or repeat last keyboard shortcut command</td></tr>
+							<tr><td><code class="inline-code">Ctrl+⇧+V</code></td> <td>paste and indent correctly</td></tr>
+							<tr><td><code class="inline-code">Ctrl+Space</code></td> <td>select next auto-complete suggestion</td></tr>
+							<tr><td><code class="inline-code">Ctrl+U</code></td> <td>soft undo (somehow undoes your movements; it jumps to your last change before undoing it when you repeat this command)</td></tr>
+						</table>
+						</div>
+					</section>
+					<section>
+						<h3 class="monokai">Navigation/Goto Anywhere</h3>
+						<div class="emmet-table">
+						<table>
+							<tr><td><code class="inline-code">Ctrl+P</code></td> <td>quick-open files by name in your project (doesn’t seem to need an actual project set up, it just searches in the directories around the currently-opened file</td></tr>
+							<tr><td><code class="inline-code">Ctrl+R</code></td> <td>goto symbol (functions and classes) in the file. Same as Ctrl+P, then type @</td></tr>
+							<tr><td><code class="inline-code">Ctrl+;</code></td> <td>goto word in current file. Same as Ctrl+P, then type #</td></tr>
+							<tr><td><code class="inline-code">Ctrl+G</code></td> <td>goto line in current file. Same as Ctrl+P, then type :</td></tr>
+						</table>
+						</div>
+						<h3 class="monokai">General</h3>
+						<div class="emmet-table-font">
+						<table>
+							<tr><td><code class="inline-code">Ctrl+⇧+P</code></td> <td>command prompt</td></tr>
+							<tr><td><code class="inline-code">Ctrl+KB</code></td> <td>toggle side bar</td></tr>
+						</table>
+						</div>
+						<h3 class="monokai">Find/Replace</h3>
+						<div class="emmet-table-font">
+						<table>
+							<tr><td><code class="inline-code">Ctrl+F</code></td> <td>find</td></tr>
+							<tr><td><code class="inline-code">Ctrl+H</code></td> <td>replace</td></tr>
+							<tr><td><code class="inline-code">Ctrl+⇧+F</code></td> <td>find in files</td></tr>
+						</table>
+						</div>
+					</section>
+					<section>
+						<h3 class="monokai">Split window</h3>
+						<div class="emmet-table-font">
+						<table>
+							<tr><td><code class="inline-code">Alt+⇧+2</code></td> <td>split into two columns</td></tr>
+							<tr><td><code class="inline-code">Alt+⇧+1</code></td> <td>revert to single column</td></tr>
+							<tr><td><code class="inline-code">Alt+⇧+5</code></td> <td>grid (4 groups)</td></tr>
+							<tr><td><code class="inline-code">Ctrl+[1,2,3,4]</code></td> <td>jump to “group” (pane)</td></tr>
+							<tr><td><code class="inline-code">Ctrl+⇧+[1,2,3,4]</code></td> <td>move file to specified group</td></tr>
+						</table>
+						</div>
+						<h3 class="monokai">Bookmarks</h3>
+						<div class="emmet-table-font">
+						<table>
+							<tr><td><code class="inline-code">Ctrl+F2</code></td> <td>toggle bookmark</td></tr>
+							<tr><td><code class="inline-code">F2</code></td> <td>next bookmark</td></tr>
+							<tr><td><code class="inline-code">⇧+F2</code></td> <td>previous bookmark</td></tr>
+							<tr><td><code class="inline-code">Ctrl+⇧+F2</code></td> <td>clear bookmarks</td></tr>
+						</table>
+						</div>
+						<h3 class="monokai">Text manipulation</h3>
+						<div class="emmet-table-font">
+						<table>
+							<tr><td><code class="inline-code">Ctrl+KU</code></td> <td>upper case</td></tr>
+							<tr><td><code class="inline-code">Ctrl+KL</code></td> <td>lower case</td></tr>
+						</table>
+						</div>
+					</section>
+				</section>
+				<section>
+					<h1>END</h1>
+				</section>
+			</div>
+		</div>
+
+		<script src="../_assets/lib/js/head.min.js"></script>
+		<script src="../_assets/js/reveal.min.js"></script>
+
+		<script src="../_assets/lib/js/jquery.min.js"></script>
+		<script>
+			Array.prototype.shuffle = function() {
+				for(var j, x, i = this.length; i; j = Math.floor(Math.random() * i), x = this[--i], this[i] = this[j], this[j] = x);
+				return this;
+			};
+			jQuery(document).ready(function($) {
+				var $monokai = $('.monokai'),
+					colors = [ 'green', 'sky', 'red', 'purple' ].shuffle();
+
+				$('#sublime-site').click(function(e) {
+					e.preventDefault();
+					$(this).hide();
+					var iframe = $(this).next();
+					iframe.attr("src", iframe.attr("data-src")); 
+				});
+
+				$monokai.each(function() {
+					var that = $(this),
+						txt = that.text().split(' '),
+						$new = '',
+						nextColor;
+					$.each(txt, function(x,y) {
+						nextColor = 'text-' + get_next_color();
+						$new += '<span class="'+nextColor+'">'+y+'</span> '
+					});
+					$(this).html($new)
+				});
+				function get_next_color() {
+					var ret = colors.shift();
+					colors.push(ret);
+					return ret;
+				}
+			});
+		</script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'concave', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				parallaxBackgroundImage: 'reveal-parallax-2.jpg',
+				parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '../_assets/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../_assets/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../_assets/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../_assets/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../_assets/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../_assets/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

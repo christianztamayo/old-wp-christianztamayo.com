@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Marketing Results - Preparation for the upcoming WP rip</title>
+
+		<meta name="description" content="Marketing Results meeting for the upcoming WP rip.">
+		<meta name="author" content="Christian Z. Tamayo">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../_assets/css/reveal.min.css">
+		<link rel="stylesheet" href="../_assets/css/theme/beige.css" id="theme">
+		<style>
+			.text-red {color: red}
+			.navigate-down {display: block; }
+			pre .coffeescript .javascript, pre .javascript .xml, pre .tex .formula, pre .xml .javascript, pre .xml .vbscript, pre .xml .css, pre .xml .cdata {
+				opacity: 1 !important;
+			}
+			pre ::selection {
+				background: #ff5e99;
+			}
+		</style>
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../_assets/lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = '../_assets/css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="../_assets/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Marketing Results</h1>
+					<h2>Preparation for the upcoming WP rip</h2>
+				</section>
+
+				<section>
+					<h2>Agenda</h2>
+					<ol>
+						<li>Coding
+							<ul>
+								<li>Keeping our code organized</li>
+								<li>Convention - to code as one</li>
+								<li>CSS tips</li>
+							</ul>
+						</li>
+						<li>Wordpress
+							<ul>
+								<li>Genesis Framework</li>
+							</ul>
+						</li>
+					</ol>
+				</section>
+
+				<!-- Example of nested vertical slides -->
+				<section>
+					<h1>Coding</h1>
+				</section>
+
+				<section>
+					<section>
+						<p>Our goal is to make this:</p>
+						<pre><code data-trim contenteditable>
+&lt;style type="text/css"&gt;
+div#container .outer-div .wrap .inner-div .wrap .sidelinks ul {
+    margin-left: 0;
+}
+div#container .outer-div .wrap .inner-div .wrap .sidelinks ul:before,
+div#container .outer-div .wrap  .inner-div .wrap .sidelinks ul:after {
+       content: " "; display: table; }
+
+div#container .outer-div .wrap .inner-div .wrap .sidelinks ul:after {
+    	clear: both;
+}
+div#container .outer-div .wrap .inner-div .wrap .sidelinks ul li {
+    float: left !important;
+    	margin-right: 20px;
+    	display: block;
+}
+&lt;/style&gt;
+						</code></pre>
+						<a href="#" class="navigate-down enabled">&#8595;</a>
+					</section>
+					<section>
+						<p>Look like this:</p>
+						<pre><code data-trim contenteditable>
+&lt;style type="text/css"&gt;
+/* Micro clearfix hack */
+.clearfix:before,.clearfix:after{content:" ";display: table}
+.clearfix:after{clear:both}
+.clearfix{*zoom:1}
+
+/* Side links */
+.sidelinks ul {
+    margin-left: 0;
+}
+.sidelinks ul li {
+    float: left;
+    margin-right: 20px;
+    display: block;
+}
+&lt;/style&gt;
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<h3>Simplify our selectors</h3>
+					<ul>
+						<li>Never be too specific in using selectors</li>
+						<li>Simplifying selectors will not only clean up our code, but will also yield better performance</li>
+						<li>Inheritance will be easier to override</li>
+					</ul>
+				</section>
+
+				<section>
+					<section>
+						<p style="font-size: .7em">Example, we wanted to select <code>.sidelinks li</code> on the first <code>.inner-div</code>:</p>
+						<pre><code data-trim contenteditable style="font-size: 14px;">
+&lt;div class=&quot;container page-id-4&quot;&gt;
+  &lt;div class=&quot;outer-div&quot;&gt;
+    &lt;div class=&quot;inner-div first&quot;&gt;
+      &lt;div class=&quot;wrap&quot;&gt;
+        &lt;div class=&quot;sidelinks&quot;&gt;
+          &lt;ul&gt;
+            &lt;li&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit.&lt;/li&gt;
+            &lt;li&gt;Distinctio quod, expedita voluptate autem optio laborum repellat&lt;/li&gt;
+            &lt;li&gt;Fugit ullam sit excepturi ipsum repellat.&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;&lt;!-- This is from the first .inner-div--&gt;
+    &lt;div class=&quot;inner-div second&quot;&gt;
+      &lt;div class=&quot;wrap&quot;&gt;
+        &lt;div class=&quot;sidelinks&quot;&gt;
+          &lt;ul&gt;
+            &lt;li&gt;Distinctio quod, expedita voluptate autem optio laborum repellat&lt;/li&gt;
+            &lt;li&gt;Fugit ullam sit excepturi ipsum repellat.&lt;/li&gt;
+            &lt;li&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit.&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;&lt;!-- This is from the second .inner-div--&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+						</code></pre>
+						<a href="#" class="navigate-down enabled">&#8595;</a>
+					</section>
+					<section>
+						<p>Instead of using...</p>
+						<pre><code data-trim contenteditable>
+&lt;style&gt;
+    div.container.page-id-4 .outer-div .inner-div.first .wrap .sidelinks li {
+        /* style here */
+    }
+&lt;/style&gt;
+						</code></pre>
+						<div class="fragment">
+							<p>We can use...</p>
+							<pre><code data-trim contenteditable>
+&lt;style&gt;
+    .page-id-4 .inner-div.first .sidelinks li {
+        /* style here */
+    }
+&lt;/style&gt;
+							</code></pre>
+						</div>
+						<div class="fragment">
+							<p>Or much further, depending on the broadness of the class...</p>
+							<pre><code data-trim contenteditable>
+&lt;style&gt;
+    .inner-div.first .sidelinks li {}
+    .inner-div:first-child .sidelinks li {}
+&lt;/style&gt;
+							</code></pre>
+							<p>We can also use :first-child. That way, we can remove the extra <code>.first</code> HTML class on the inner-div.</p>
+						</div>
+					</section>
+				</section>
+
+				<section>
+					<h3>Avoid using IDs as much as possible</h3>
+					<ol>
+						<li>IDs are OK, but it defeats the purpose of reusability</li>
+						<li>Elements are not re-usable on that page</li>
+						<li>Should only be used on special occassions</li>
+						<li>Hard to override its styling</li>
+						<li>IDs can lead to the "!important" bloat</li>
+					</ol>
+				</section>
+				<section>
+					<section>
+						<p>Example, we want to override <code>#dark</code></p>
+						<pre><code data-trim contenteditable>
+&lt;style&gt;
+    #dark { background: black; }
+
+    /* Other styles here */
+    /* Other styles here */
+    /* Other styles here */
+    /* Other styles here */
+
+    /* Then came a time that we wanted to override #dark */
+    .notdark { background: yellow; }
+
+&lt;/style&gt;
+&lt;p id="dark" class="notdark"&gt;test&lt;/p&gt;
+						</code></pre>
+						<p>Will render as:</p>
+						<iframe src="iframe-p-dark.html" frameborder="0"></iframe>
+						<a href="#" class="navigate-down enabled">&#8595;</a>
+					</section>
+					<section>
+						<p>Unless we use !important<br> - which is then much <strong class="text-red">harder</strong> to override</p>
+						<pre><code data-trim contenteditable>
+&lt;style&gt;
+    #dark { background: black; }
+    .notdark { background: yellow !important; }
+&lt;/style&gt;
+&lt;p id="dark" class="notdark"&gt;test&lt;/p&gt;
+						</code></pre>
+						<iframe src="iframe-p-dark-2.html" frameborder="0"></iframe>
+						<a href="#" class="navigate-down enabled">&#8595;</a>
+					</section>
+					<section>
+						<p>Then it leads to more bloat and makes our code unreadable</p>
+						<pre><code data-trim contenteditable>
+&lt;style&gt;
+    #dark { background: black; }
+    .notdark { background: yellow !important; }
+    .quitedark { background: grey !important; }
+    p.notdarkagain { background: yellow !important; }
+    /*
+     * Leads us to use the container as a selector
+     * 'cause overriding gets harder @_@
+     */
+    div.shouldbegreen p#dark { background: green !important; }
+&lt;/style&gt;
+						</code></pre>
+						<a href="#" class="navigate-down enabled">&#8595;</a>
+					</section>
+					<section data-background="#000">
+						<p class="text-red">And we destroy other parts of the site without knowing it</p>
+						<img class="fragment" src="meme-monitor.png" alt="">
+					</section>
+				</section>
+
+				<section>
+					<h3>We want to make sure that we also write clean HTML</h3>
+					<div id="tobefixed">
+					<pre><code data-trim contenteditable>
+&lt;div class =  " container " &gt;
+    &lt;ul class = " menu "&gt;
+        &lt;li&gt; &lt;a href = " / "&gt;  Home &lt;/a&gt; &lt;/li&gt;
+
+         &lt;li&gt;
+            &lt;a href = "/products/" &gt; Products&lt;/a&gt;
+        &lt;/li&gt;
+
+    &lt;/ul&gt;
+       &lt;p class = "first"&gt; This is a paragraph with a class of first &lt;/p&gt;
+      &lt;div id = &quot; specialdiv &quot;&gt;
+           &lt;button&gt; Home &lt;/button&gt;
+      &lt;/div&gt;
+&lt;/div&gt;
+					</code></pre>
+					<pre style="display: none;"><code data-trim contenteditable>
+&lt;div class="container"&gt;
+    &lt;ul class="menu"&gt;
+        &lt;li&gt;
+            &lt;a href="/"&gt;Home&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;a href="/products/"&gt;Products&lt;/a&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;p class="first"&gt;This is a paragraph with a class of first&lt;/p&gt;
+    &lt;div id=&quot;specialdiv&quot;&gt;
+        &lt;button&gt;Home&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+					</code></pre>
+					</div>
+					<button id="fix" style="padding: 10px 20px; border: 1px solid black; outline: 0;position: absolute; right: 4em;">Fix</button>
+					<ul>
+						<li>Avoid unnecessary whitespaces</li>
+						<li>Indent properly. Don't mix tabs and spaces</li>
+						<li>Remember to differentiate <em>Block</em> elements with <em>Inline</em> ones</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Simplify Media Queries</h2>
+					<p>In our case, the Genesis Framework, we have three breakpoints to consider. These are:</p>
+					<ul>
+						<li><code>@media only screen and (max-width: <span class="text-red">1139px</span>) {}</code></li>
+						<li><code>@media only screen and (max-width: <span class="text-red">1023px</span>) {}</code></li>
+						<li><code>@media only screen and (max-width: <span class="text-red">767px</span>) {}</code></li>
+					</ul>
+					<hr>
+					<p><strong class="text-red">We lock ourselves into these three</strong>. As much as possible, we don't want to add more breakpoints to fix things. Instead, we can just adjust our styling, or even rewrite our code. Let's make sure we think it through before writing any code.</p>
+				</section>
+
+				<section>
+					<section>
+						<h2>Micro clearfix</h2>
+						<p>The micro clearfix hack is a float clearing technique that doesn't use HTML markup, and thus minimizes code. The one we should look into is the latest technique by <a href="http://nicolasgallagher.com/micro-clearfix-hack/">Nicolas Gallagher</a>.</p>
+						<pre><code data-trim contenteditable>
+<style type="text/css">
+    .clearfix:before,
+    .clearfix:after {
+        content: " ";
+        display: table;
+    }
+    .clearfix:after {
+        clear: both;
+    }
+    .clearfix {
+        *zoom: 1;
+    }
+</style>
+						</code></pre>
+						<a href="#" class="navigate-down enabled">&#8595;</a>
+					</section>
+					<section>
+						<h3>Demo</h3>
+						<iframe src="iframe-clearfix.html" frameborder="0" style="width: 100%; height: 9em;"></iframe>
+						<pre style="font-size: 0.8ex;"><code data-trim contenteditable>
+<style>
+    .container { background: #DCE6BE; }
+    .section {
+        float: left;
+        display: inline;
+        width: 220px;
+        height: 200px;
+        padding: 30px 0 0;
+        margin: 20px 10px;
+        background: #A0C431;
+    }
+</style>
+<div class="container clearfix">
+    <div class="section">Float</div>
+    <div class="section">Float</div>
+</div>
+						</code></pre>
+						<a href="#" class="navigate-down enabled">&#8595;</a>
+					</section>
+					<section>
+						<h3>No need to use:</h3>
+						<pre style="font-size: 0.8ex;"><code data-trim contenteditable>
+<div class="section">Float</div>
+<div class="section">Float</div>
+<p class="clear"></p>
+						</code></pre>
+						<p>OR</p>
+						<pre style="font-size: 0.8ex;"><code data-trim contenteditable>
+<style>
+    /* Adding height to the container */
+    .container { height: 200px; }
+</style>
+						</code></pre>
+						<p>AND IT WORKS IN IE6! :)</p>
+					</section>
+				</section>
+
+				<section>
+					<h2>IE compatibility</h2>
+					<p>We all know hacks are easy to implement:</p>
+						<pre style="font-size: 0.8ex;"><code data-trim contenteditable>
+<style>
+/* IE6 */
+.element { _color: blue }
+ 
+/* IE6, IE7 */
+.element { *color: blue; }
+
+/* IE6, IE7, IE8 */
+.element { color: blue\9; }
+</style>
+						</code></pre>
+				</section>
+
+				<section>
+					<h2>IE compatibility</h2>
+					<p>But we can implement a better solution without hacks <br>- by using IE conditional comments:</p>
+					<pre style="font-size: 0.8ex;"><code data-trim contenteditable>
+&lt;!doctype html&gt;
+&lt;!--[if lt IE 7]&gt;      &lt;html class=&quot;no-js lt-ie9 lt-ie8 lt-ie7&quot;&gt; &lt;![endif]--&gt;
+&lt;!--[if IE 7]&gt;         &lt;html class=&quot;no-js lt-ie9 lt-ie8&quot;&gt; &lt;![endif]--&gt;
+&lt;!--[if IE 8]&gt;         &lt;html class=&quot;no-js lt-ie9&quot;&gt; &lt;![endif]--&gt;
+&lt;!--[if gt IE 8]&gt;&lt;!--&gt; &lt;html class="no-js"&gt; &lt;!--&lt;![endif]--&gt;
+					</code></pre>
+					<p>CSS:</p>
+					<pre style="font-size: 0.8ex;"><code data-trim contenteditable>
+<style>
+    .lt-ie8 .element { margin-right: 0; }
+    .lt-ie7 .element { float: none; }
+    .lt-ie9 .element { border: 10px solid green; }
+</style>
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Wordpress</h1>
+				</section>
+
+				<section>
+					<section>
+						<p>Majority of the new sites and finished rips are made using the Genesis Framework. In Wordpress, we extend a framework using <strong class="text-red">Child Themes</strong>.</p>
+						<a href="#" class="navigate-down enabled">&#8595;</a>
+					</section>
+					<section>
+						<p>So Rule #1...</p>
+						<h2 class="fragment">Never modify framework files</h2>
+						<ul>
+							<li class="fragment">Not any single file of the framework should be edited</li>
+							<li class="fragment">Our workplace for this scenario is the child theme itself</li>
+							<li class="fragment"><em>We modify the framework through the child theme</em></li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Some useful snippets for Genesis:</h3>
+						<pre><code data-trim contenteditable style="font-size: 14px;">
+&lt;?php
+/** Remove Title & Description */
+remove_action( 'genesis_site_title', 'genesis_seo_site_title' );
+remove_action( 'genesis_site_description', 'genesis_seo_site_description' );
+
+/** Remove post titles */
+remove_action( 'genesis_post_title','genesis_do_post_title' );
+
+/** Remove Edit Link */
+add_filter( 'edit_post_link', '__return_false' );
+
+/** Add custom sidebar */
+genesis_register_sidebar(array(
+    'name'=>'Alternative Sidebar',
+    'id' => 'sidebar-alternative',
+));
+						</code></pre>
+					</section>
+					<section>
+						<h3>Some useful snippets for Genesis:</h3>
+						<pre><code data-trim contenteditable style="font-size: 14px;">
+&lt;?php
+/** Remove footer widgets */
+remove_theme_support( 'genesis-footer-widgets', 3 );
+
+/** Remove Footer */
+remove_action( 'genesis_footer', 'genesis_do_footer' );
+
+//* Favicon
+add_filter( 'genesis_pre_load_favicon', 'custom_favicon' );
+function custom_favicon() {
+	return CHILD_URL . '/images/favicon.ico';
+}
+						</code></pre>
+					</section>
+					<section>
+						<h3>Some useful snippets for Genesis:</h3>
+						<pre><code data-trim contenteditable style="font-size: 14px;">
+&lt;?php
+//* Custom widgetized footer
+genesis_register_sidebar( array(
+    'id'            => 'footer-widgets',
+    'name'          => __( 'Footer' ),
+    'description'   => __( 'Main footer area' ),
+) );
+add_action('genesis_footer_output', 'site_footer');
+function site_footer() {
+    if ( !function_exists( 'dynamic_sidebar' ) || !dynamic_sidebar( 'footer-widgets' ) ) {}
+}
+						</code></pre>
+					</section>
+					<section>
+						<h3>For more useful snippets, visit: <a href="http://gregrickaby.com/genesis-code-snippets/">http://gregrickaby.com/genesis-code-snippets/</a></h3>
+					</section>
+				</section>
+
+				<section>
+					<p style="position: absolute; top: 0; margin-top: -20px;">CSS Default TOC for Genesis</p>
+					<pre><code data-trim contenteditable style="font-size: 14px; line-height: 1.2; max-height: none;">
+- HTML5 Reset
+    - Baseline Normalize
+    - Box Sizing
+    - Float Clearing
+- Defaults
+    - Typographical Elements
+    - Headings
+    - Objects
+    - Forms
+    - Tables
+- Structure and Layout
+    - Site Containers
+    - Column Widths and Positions
+    - Column Classes
+- Common Classes
+    - WordPress
+    - Genesis
+    - Titles
+- Widgets
+    - Featured Content
+- Plugins
+    - Genesis eNews Extended
+    - Genesis Latest Tweets
+    - Gravity Forms
+    - Jetpack
+- Site Header
+    - Title Area
+    - Widget Area
+- Site Navigation
+    - Header Navigation
+    - Primary Navigation
+    - Secondary Navigation
+- Content Area
+    - Entries
+    - Pagination
+    - Comments
+- Sidebars
+- Footer Widgets
+- Site Footer
+- Site-specific Styles   ### We will be putting our site-specific styles here ###
+- Media Queries
+    - max-width: 1139px
+    - max-width: 1023px
+    - max-width: 767px
+					</code></pre>
+				</section>
+
+				<section>
+					<p style="position: absolute; top: 0; margin-top: -20px;">Sample utility classes</p>
+					<pre><code data-trim contenteditable style="font-size: 14px; line-height: 1.2; max-height: none;">
+<style>
+    /* Utility */
+    .text-blue { color: #24418f }
+    .text-cyan { color: #23aea6 }
+    .text-darkblue { color: #071741 }
+    .text-red { color: red }
+    .hide-text {
+        font: 0/0 a;
+        color: transparent;
+        text-shadow: none;
+        background-color: transparent;
+        border: 0;
+    }
+    .pull-left, .leftalign, .fleft, .floatLft, .f-left { float: left }
+    .pull-right, .rightalign, .fright, .floatRgt, .f-right { float: right }
+    .clearAll, .clear-both { clear: both; }
+    .hide { display: none }
+    .show { display: block }
+    .invisible { visibility: hidden }
+    .text-left { text-align: left }
+    .text-right { text-align: right }
+    .text-center, .centered { text-align: center }
+    .text-strong { font-weight: bold }
+    .text-underline { text-decoration: underline; }
+    .text-note { font-size: 14px; font-style: italic; }
+    .uppercase { text-transform: uppercase; }
+    .lowercase { text-transform: lowercase; }
+    .text-mw-sans { font-family: 'Merriweather Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+    .radius { -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; }
+    .align-right { float: right; margin: 0 0 10px 10px; }
+    .align-left { float: right; margin: 0 10px 10px 0; }
+</style>
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>END</h1>
+				</section>
+			</div>
+			<p id="me">Christian Z. Tamayo</p>
+		</div>
+
+		<script src="../_assets/lib/js/head.min.js"></script>
+		<script src="../_assets/js/reveal.min.js"></script>
+
+		<script src="../_assets/lib/js/jquery.min.js"></script>
+		<script>
+			jQuery(document).ready(function($) {
+				var tbfa = $('#tobefixed pre:first-child');
+				var tbfb = $('#tobefixed pre:last-child');
+				$('#fix').click(function(e) {
+					if( tbfa.is(':hidden') ) {
+						tbfa.show();
+						tbfb.hide();
+						$(this).text('Fix');
+					} else {
+						tbfa.hide();
+						tbfb.show();
+						$(this).text('Destroy');
+					}
+				});
+			});
+		</script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '../_assets/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../_assets/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../_assets/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../_assets/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../_assets/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../_assets/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

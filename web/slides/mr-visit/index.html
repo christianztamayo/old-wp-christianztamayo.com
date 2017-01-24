@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>SAC-MR Presentation</title>
+
+		<meta name="description" content="SAC-MR Presenatation">
+		<meta name="author" content="Christian Z. Tamayo">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../_assets/css/reveal.min.css">
+		<link rel="stylesheet" href="../_assets/css/theme/default.css" id="theme">
+		<style>
+			.text-red {color: red}
+			.navigate-down {display: block; }
+			pre .coffeescript .javascript, pre .javascript .xml, pre .tex .formula, pre .xml .javascript, pre .xml .vbscript, pre .xml .css, pre .xml .cdata {
+				opacity: 1 !important;
+			}
+			pre ::selection {
+				background: #ff5e99;
+			}
+			.training-slides { margin-left: 0; padding-left: 0; }
+			.training-slides > li { list-style: none; }
+			.training-slides img { width: 50%; display: block; }
+			.training-slides a { display: block; }
+			.training-slides ul li { font-size: 75%;}
+		</style>
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../_assets/lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = '../_assets/css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="../_assets/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Welcome M.R. Team!</h1>
+					<h2>A Quick Overview of Productivity Tools &amp; Systems at SAC</h2>
+				</section>
+
+				<section>
+					<h2>Agenda</h2>
+					<ol>
+						<li>M-R Wordpress Boilerplate</li>
+						<li>Training slides</li>
+						<li>Tools we use</li>
+						<li>Quick Technical Overview</li>
+					</ol>
+				</section>
+
+				<section>
+					<h1>M-R Wordpress Boilerplate</h1>
+				</section>
+				<section>
+					<h2>M-R Wordpress Boilerplate</h2>
+					<ul>
+						<li>A Wordpress boilerplate especially made for MR projects</li>
+						<li>Includes the essential theme and plugins for development</li>
+						<li>Comes with an updated version of the Genesis Theme, along with a simplified version of the Genesis Sample Theme</li>
+						<li>Minimizes the time needed to setup Wordpress for MR clients</li>
+						<li>SASS-ified!</li>
+						<li>Genesis Hooks Debugger to target hooks with ease</li>
+					</ul>
+				</section>
+				<section>
+					<p><small>For more info, click the image below:</small></p>
+					<p>
+						<a target="_blank" href="https://bitbucket.org/ct2marketingresults/mr-wp-boilerplate">
+							<img src="mr-wp-boilerplate.jpg" alt="MR-WP Boilerplate">
+						</a>
+					</p>
+				</section>
+
+				<section>
+					<h1>Training slides</h1>
+				</section>
+				<section>
+					<ul class="training-slides">
+						<li>
+							<a target="_blank" href="http://straightarrowdev.com/xtn/mr-slides/mr-meeting-06-2014/">
+								<img src="slide-1.jpg" alt="" style="float:left; margin: 0 100px 20px 0">
+								<p>June 2014 Meeting</p>
+								<ul>
+									<li>Keeping code organized</li>
+									<li>Coding conventions</li>
+									<li>Coding best practices</li>
+									<li>CSS Tips and Tricks</li>
+									<li>Genesis Framework</li>
+								</ul>
+							</a>
+						</li>
+						<li style="clear:both">
+							<a target="_blank" href="http://straightarrowdev.com/xtn/mr-slides/sublime-training/">
+								<img src="slide-2.jpg" alt="" style="float:right; margin: 0 0 20px 20px">
+								<p>Sublime Text Training</p>
+								<ul>
+									<li>Introduction to ST</li>
+									<li>Reasons to use ST</li>
+									<li>Package Manager</li>
+									<li>Emmet</li>
+									<li>Keyboard shortcuts</li>
+								</ul>
+							</a>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>Tools we use</h1>
+				</section>
+				<section>
+					<p>Here are some of the tools we use to develop efficiently:</p>
+					<ul>
+						<li>Image Lossless Optimizers - e.g. ImageOptim</li>
+						<li>Colorzilla - CSS Gradients</li>
+						<li>CSS Triangles</li>
+						<li>Browser plugins</li>
+						<li>Drupal to WP Database Conversion script</li>
+						<li>XenuLink/Integrity</li>
+						<li>FTP clients</li>
+						<li>Git</li>
+						<li>Adobe Photoshop</li>
+						<li>and many more...</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>Quick Technical Overview</h1>
+				</section>
+				<section>
+					<h2>Relative URLs</h2>
+					<pre>
+&lt;img src=&quot;[theme-dir]/images/test.jpg&quot;&gt;
+					</pre>
+					<pre>
+&lt;a href=&quot;/some-link-relative-to-root&quot;&gt;Click Me&lt;/a&gt;
+					</pre>
+					<pre>
+.some-class { background: url(images/bg.jpg) no-repeat; }
+					</pre>
+				</section>
+				<section>
+					<h2>SASS Partials layout</h2>
+					<pre>
+// Variables and mixins
+variables.scss
+mixins.scss
+
+// Reset and print styles
+normalize.scss
+print.scss
+
+// Core CSS
+scaffolding.scss
+type.scss
+grid.scss
+forms.scss
+buttons.scss
+
+// Structure and Layout
+wordpress.scss
+site-header.scss
+site-navigation.scss
+site-content.scss
+site-sidebar.scss
+site-footer.scss
+
+// Utilities and Media Queries
+utilities.scss
+media-queries.scss
+					</pre>
+				</section>
+				<section>
+					<h2>Commonly used WP Plugins</h2>
+					<ul>
+						<li>Custom Permalinks</li>
+						<li>Dynamic Widgets</li>
+						<li>Google XML Sitemaps</li>
+						<li>Gravity Forms</li>
+						<li>PHP Code Widget</li>
+						<li>Shortcodes in Sidebar Widgets</li>
+						<li>ShortCodes UI</li>
+						<li>Toggle The Title</li>
+						<li>Toggle wpautop</li>
+						<li>Visual Website Optimizer</li>
+						<li>W3 Total Cache</li>
+						<li>Wordfence</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>END</h1>
+				</section>
+			</div>
+			<p id="me">Christian Z. Tamayo</p>
+		</div>
+
+		<script src="../_assets/lib/js/head.min.js"></script>
+		<script src="../_assets/js/reveal.min.js"></script>
+
+		<script src="../_assets/lib/js/jquery.min.js"></script>
+		<script>
+			jQuery(document).ready(function($) {
+				var tbfa = $('#tobefixed pre:first-child');
+				var tbfb = $('#tobefixed pre:last-child');
+				$('#fix').click(function(e) {
+					if( tbfa.is(':hidden') ) {
+						tbfa.show();
+						tbfb.hide();
+						$(this).text('Fix');
+					} else {
+						tbfa.hide();
+						tbfb.show();
+						$(this).text('Destroy');
+					}
+				});
+			});
+		</script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				parallaxBackgroundImage: 'reveal-parallax-1.jpg',
+				parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '../_assets/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../_assets/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../_assets/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../_assets/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../_assets/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../_assets/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
