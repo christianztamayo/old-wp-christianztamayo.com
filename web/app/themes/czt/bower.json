@@ -37,6 +37,7 @@
         "./assets/stylesheets/bootstrap/_alerts.scss",
         "./assets/stylesheets/bootstrap/_modals.scss",
         "./assets/stylesheets/bootstrap/_tooltip.scss",
+        "./assets/stylesheets/bootstrap/_thumbnails.scss",
         "./assets/stylesheets/bootstrap/_utilities.scss",
         "./assets/javascripts/bootstrap/transition.js",
         "./assets/javascripts/bootstrap/modal.js",
