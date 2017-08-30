@@ -610,7 +610,7 @@
 
         // skills
         var $skills = $('.section-skills'),
-            $skillsItems = $skills.find('.spr-skills');
+            $skillsItems = $skills.find('.skills-item');
 
         $skillsItems.sort( function(){ return ( Math.round( Math.random() ) - 0.5 ); } );
 
