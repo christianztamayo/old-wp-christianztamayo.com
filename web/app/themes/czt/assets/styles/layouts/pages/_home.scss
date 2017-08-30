@@ -166,10 +166,11 @@
   .container-fluid {
     max-width: 1080px;
   }
-  .spr-skills {
+  .skills-item {
     margin: .5em .75em;
     transition: filter 0.15s;
     filter: grayscale(90%);
+    vertical-align: middle;
     &.active,
     &:hover {
       filter: grayscale(0%);
