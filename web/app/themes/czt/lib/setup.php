@@ -53,31 +53,31 @@ function setup() {
   add_editor_style(Assets\asset_path('styles/main.css'));
 
   // Disable built-in responsive images
-  add_filter( 'wp_calculate_image_srcset_meta', '__return_null' );
+  add_filter('wp_calculate_image_srcset_meta', '__return_null');
 
   // Disable wpautop
-  remove_filter( 'the_content', 'wpautop' );
-  remove_filter( 'the_excerpt', 'wpautop' );
+  remove_filter('the_content', 'wpautop');
+  remove_filter('the_excerpt', 'wpautop');
 
   // Disable search and archive
-  function disable_search( $query, $error = true ) {
-    if ( is_search() || is_archive()  ) {
-      if( is_search() ) {
+  function disable_search($query, $error = true) {
+    if (is_search() || is_archive() ) {
+      if (is_search()) {
         $query->is_search = false;
         $query->query_vars['s'] = false;
         $query->query['s'] = false;
       }
-      if( is_archive() ) {
+      if (is_archive()) {
         $query->is_archive = false;
       }
       // to error
-      if ( $error == true ) {
+      if ($error == true) {
         $query->is_404 = true;
       }
     }
   }
-  add_action( 'parse_query', __NAMESPACE__ . '\\disable_search' );
-  add_filter( 'get_search_form', '__return_null' );
+  add_action('parse_query', __NAMESPACE__ . '\\disable_search');
+  add_filter('get_search_form', '__return_null');
 }
 add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
 
