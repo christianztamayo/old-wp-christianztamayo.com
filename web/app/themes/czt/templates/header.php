@@ -6,11 +6,13 @@
       <div class="intro-content">
         <div class="intro-text">
           <div class="ovh">
-            <h1>Christian Z. Tamayo</h1>
+            <h1><?php echo get_bloginfo('title') ?></h1>
           </div>
           <div class="divider"></div>
           <div class="ovh">
-            <h2>Web Dev From Manila<span class="blinking-cursor">_</span></h2>
+            <h2>
+              <?php echo get_bloginfo('description') ?><span class="blinking-cursor">_</span>
+            </h2>
           </div>
         </div>
       </div>
@@ -25,7 +27,7 @@
           </a>
         </h1>
         <h2>
-          Web Dev From Manila<span class="blinking-cursor">_</span>
+          <?php echo get_bloginfo('description') ?><span class="blinking-cursor">_</span>
         </h2>
       </div>
       <div class="flex-push"></div>

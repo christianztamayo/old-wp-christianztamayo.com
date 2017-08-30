@@ -12,7 +12,7 @@
     right: 0;
     bottom: 0;
   }
-  .container-fluid {
+  .footer-inner {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -23,7 +23,7 @@
   }
   .brand {
     font-weight: 900;
-    font-size: 5em;
+    font-size: 4em;
     margin-bottom: 0.12em;
   }
 }
