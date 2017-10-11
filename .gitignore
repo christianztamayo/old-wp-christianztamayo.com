@@ -7,6 +7,13 @@ web/app/uploads/*
 !web/app/uploads/.gitkeep
 !web/app/mu-plugins/soiled
 
+# Theme
+web/app/themes/czt/dist
+web/app/themes/czt/bower_components
+web/app/themes/czt/node_modules
+web/app/themes/czt/npm-debug.log
+web/app/themes/czt/vendor
+
 # WordPress
 web/wp
 web/.htaccess
