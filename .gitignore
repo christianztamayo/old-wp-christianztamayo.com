@@ -8,11 +8,24 @@ web/app/uploads/*
 !web/app/mu-plugins/soiled
 
 # Theme
-web/app/themes/czt/dist
+web/app/themes/czt/assets
 web/app/themes/czt/bower_components
 web/app/themes/czt/node_modules
 web/app/themes/czt/npm-debug.log
 web/app/themes/czt/vendor
+web/app/themes/czt/.editorconfig
+web/app/themes/czt/.jscsrc
+web/app/themes/czt/.jshintrc
+web/app/themes/czt/.travis.yml
+web/app/themes/czt/bower.json
+web/app/themes/czt/CHANGELOG.md
+web/app/themes/czt/composer.json
+web/app/themes/czt/CONTRIBUTING.md
+web/app/themes/czt/gulpfile.js
+web/app/themes/czt/LICENSE.md
+web/app/themes/czt/package.json
+web/app/themes/czt/README.md
+web/app/themes/czt/ruleset.xml
 
 # WordPress
 web/wp
